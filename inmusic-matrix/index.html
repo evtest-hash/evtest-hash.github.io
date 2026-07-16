@@ -1,0 +1,1272 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>inMusic 全品牌产品矩阵</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#f7f5f0; --surface:#ffffff; --surface-2:#f2efe8; --border:#e7e2d7;
+    --text:#201e1a; --dim:#645e54; --faint:#9c968a;
+    --accent:#a5541f; --accent-soft:#efe4d8;
+    --c-dj:#b05943; --c-prod:#6d59a4; --c-inst:#3a897d; --c-audio:#3a6b99; --c-light:#a5842f;
+    --disc:#a89c90; --disc-bg:#ebe6dd;
+    --warn-bg:#f6eee4; --warn-bd:#e2cab0; --warn-tx:#87451a;
+    --shadow:0 1px 2px rgba(35,28,20,.04),0 2px 6px rgba(35,28,20,.03);
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC","STSong",SimSun,serif;
+    --mono:ui-monospace,"SF Mono","Roboto Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#141519; --surface:#1c1e23; --surface-2:#23262c; --border:#31353c;
+      --text:#eceae5; --dim:#a8a49b; --faint:#726e66;
+      --accent:#d98a52; --accent-soft:#38281d;
+      --c-dj:#dd8266; --c-prod:#9d86d6; --c-inst:#54bcac; --c-audio:#5f9bcf; --c-light:#d3b25c;
+      --disc:#807a70; --disc-bg:#292c32;
+      --warn-bg:#271d15; --warn-bd:#4d3826; --warn-tx:#e0a06f;
+      --shadow:0 1px 3px rgba(0,0,0,.32);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#f7f5f0; --surface:#ffffff; --surface-2:#f2efe8; --border:#e7e2d7;
+    --text:#201e1a; --dim:#645e54; --faint:#9c968a;
+    --accent:#a5541f; --accent-soft:#efe4d8;
+    --c-dj:#b05943; --c-prod:#6d59a4; --c-inst:#3a897d; --c-audio:#3a6b99; --c-light:#a5842f;
+    --disc:#a89c90; --disc-bg:#ebe6dd;
+    --warn-bg:#f6eee4; --warn-bd:#e2cab0; --warn-tx:#87451a;
+    --shadow:0 1px 2px rgba(35,28,20,.04),0 2px 6px rgba(35,28,20,.03);
+  }
+  :root[data-theme="dark"]{
+    --bg:#141519; --surface:#1c1e23; --surface-2:#23262c; --border:#31353c;
+    --text:#eceae5; --dim:#a8a49b; --faint:#726e66;
+    --accent:#d98a52; --accent-soft:#38281d;
+    --c-dj:#dd8266; --c-prod:#9d86d6; --c-inst:#54bcac; --c-audio:#5f9bcf; --c-light:#d3b25c;
+    --disc:#807a70; --disc-bg:#292c32;
+    --warn-bg:#271d15; --warn-bd:#4d3826; --warn-tx:#e0a06f;
+    --shadow:0 1px 3px rgba(0,0,0,.32);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* header */
+  header.top{border-bottom:1px solid var(--border);background:var(--surface)}
+  .hero{padding:56px 0 40px}
+  .eyebrow{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);font-weight:600}
+  .eyebrow::before{content:"";display:inline-block;width:22px;height:1px;background:var(--accent);vertical-align:middle;margin-right:10px;margin-bottom:3px}
+  h1{font-family:var(--serif);font-size:clamp(30px,5vw,46px);line-height:1.12;letter-spacing:0;margin:.5em 0 .45em;font-weight:600;text-wrap:balance}
+  .lede{color:var(--dim);max-width:60ch;font-size:16px;line-height:1.65;margin:0}
+  .stats{display:flex;flex-wrap:wrap;gap:0;margin-top:36px;border-top:1px solid var(--border)}
+  .stat{padding:18px 34px 0 0;margin-right:20px}
+  .stat .n{font-family:var(--serif);font-size:32px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:0;color:var(--accent)}
+  .stat .l{font-size:11.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+
+  /* sticky controls */
+  .controls{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:12px 0}
+  .controls .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .search{flex:1;min-width:200px;display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:10px 13px}
+  .search:focus-within{border-color:var(--accent)}
+  .search input{border:0;background:transparent;color:var(--text);font-size:15px;width:100%;outline:none;font-family:var(--sans)}
+  .search svg{flex:none;color:var(--faint)}
+  .toggle{border:1px solid var(--border);background:var(--surface);color:var(--dim);border-radius:7px;padding:10px 13px;cursor:pointer;font-size:13px;font-family:var(--sans);display:flex;align-items:center;gap:6px}
+  .toggle:hover{color:var(--text);border-color:var(--faint)}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:11px}
+  .chip{font-size:12.5px;border:1px solid var(--border);background:transparent;color:var(--dim);border-radius:6px;padding:6px 13px;cursor:pointer;font-family:var(--sans);white-space:nowrap;transition:color .12s,border-color .12s}
+  .chip:hover{color:var(--text);border-color:var(--faint)}
+  .chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+  .chip .dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle;opacity:.85}
+
+  main{padding:30px 0 60px}
+  .noresult{display:none;text-align:center;color:var(--faint);padding:60px 0;font-size:15px}
+
+  /* category group */
+  .cat{margin-top:6px}
+  .cat-head{display:flex;align-items:center;gap:13px;padding:36px 0 12px}
+  .cat-head .tick{flex:none;width:9px;height:9px;border-radius:2px}
+  .cat-head h2{font-family:var(--serif);font-size:19px;letter-spacing:0;margin:0;font-weight:600}
+  .cat-head .rule{flex:1;height:1px;background:var(--border)}
+  .cat-head .cn{font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums}
+
+  /* brand card */
+  .brand{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-top:14px;box-shadow:var(--shadow);overflow:hidden}
+  .brand-head{display:flex;align-items:center;gap:11px;padding:15px 20px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .brand-head .bn{font-size:17px;font-weight:700;letter-spacing:-.01em}
+  .brand-head .tag{color:var(--dim);font-size:13px;flex:1;min-width:120px}
+  .badge{font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap;font-weight:600}
+  .badge.site{color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 38%,transparent)}
+  .badge.grp{color:var(--faint);border:1px solid var(--border)}
+  .brand-head .ct{font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums}
+  .own-note{padding:9px 20px;font-size:12.5px;line-height:1.5;color:var(--warn-tx);background:var(--warn-bg);border-bottom:1px solid var(--warn-bd)}
+
+  .tbl-scroll{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:9px 18px;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--surface)}
+  tbody td{padding:10px 18px;border-bottom:1px solid var(--border);vertical-align:top}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--surface-2)}
+  td.model{font-weight:650;white-space:nowrap;min-width:130px}
+  td.model a{color:inherit;text-decoration:none;border-bottom:1px solid var(--border);transition:color .12s,border-color .12s}
+  td.model a:hover{color:var(--accent);border-bottom-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+  td.model a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+  td.model a::after{content:"↗";font-size:9px;margin-left:4px;color:var(--accent);opacity:0;transition:opacity .12s;vertical-align:super}
+  td.model a:hover::after,td.model a:focus-visible::after{opacity:.9}
+  td.type{color:var(--dim);white-space:nowrap;font-size:13px}
+  td.desc{color:var(--dim);min-width:260px;line-height:1.5}
+  .pill{font-size:10px;padding:2px 7px;border-radius:4px;background:var(--disc-bg);color:var(--disc);margin-left:8px;vertical-align:middle;letter-spacing:.04em;font-weight:500}
+  tr.disc td.model{color:var(--faint)}
+
+  /* corrections */
+  .corr{margin-top:52px;background:var(--warn-bg);border:1px solid var(--warn-bd);border-radius:10px;padding:26px 28px}
+  .corr h3{font-family:var(--serif);margin:0 0 6px;font-size:19px;font-weight:600;color:var(--warn-tx)}
+  .corr p.sub{margin:0 0 18px;font-size:13px;color:var(--dim)}
+  .corr ul{margin:0;padding-left:0;list-style:none;display:grid;gap:15px}
+  .corr li{display:flex;gap:13px;align-items:flex-start}
+  .corr .x{flex:none;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--warn-tx);border:1px solid var(--warn-bd);border-radius:4px;padding:3px 8px;margin-top:2px;white-space:nowrap}
+  .corr b{color:var(--text)}
+  .corr .li-body{font-size:13.5px;line-height:1.65;color:var(--dim)}
+
+  footer{border-top:1px solid var(--border);margin-top:22px;padding:30px 0 64px;color:var(--faint);font-size:12.5px;line-height:1.75}
+  footer a{color:var(--accent);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  @media (max-width:640px){
+    .cat-head,.controls{top:0}
+    .cat-head{position:static}
+    td.desc{min-width:220px}
+  }
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap hero">
+    <div class="eyebrow">inMusic Brands · 品牌产品矩阵</div>
+    <h1>一家音乐科技集团的完整武器库</h1>
+    <p class="lede">从 DJ 一体机、模拟合成器、电子鼓到录音软件与舞台灯光——inMusic 通过 30 余年的收购,把 20 多个各自独立的品牌整合到同一屋檐下。下面是逐品牌、逐型号的产品清单与功能描述。</p>
+    <div class="stats">
+      <div class="stat"><div class="n">23</div><div class="l">在营品牌</div></div>
+      <div class="stat"><div class="n">450+</div><div class="l">型号 / 产品线</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">产品大类</div></div>
+      <div class="stat"><div class="n">1992</div><div class="l">起始年 (Numark)</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="row">
+      <label class="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="搜索型号 / 类别 / 关键词，例如 “合成器”、“MPC”、“混音器”…" autocomplete="off">
+      </label>
+      <button class="toggle" id="theme">◑ 主题</button>
+    </div>
+    <div class="chips" id="chips"></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="matrix"></div>
+  <div class="noresult" id="noresult">没有匹配的产品，试试别的关键词。</div>
+
+  <section class="corr">
+    <h3>⚠︎ 归属澄清：这些常被误认作 inMusic，其实不是</h3>
+    <p class="sub">调研中发现的所有权更正，均经多源交叉核实（截至 2026-07）。</p>
+    <ul>
+      <li><span class="x">已剥离</span><div class="li-body"><b>iZotope</b>（Ozone / RX / Neutron 母带修复软件）—— 曾随 2026年5月 inMusic 收购 Native Instruments 一并进入,但 <b>2026年7月初被单独卖给 Boris FX</b>,现已不属于 inMusic。</div></li>
+      <li><span class="x">已出售</span><div class="li-body"><b>ArKaos</b>（MediaMaster / GrandVJ 媒体服务器与 VJ 软件)—— inMusic 于 2020 年收购,但 <b>2025年9月转售给 ChamSys / Chauvet &amp; Sons</b>。</div></li>
+      <li><span class="x">从未拥有</span><div class="li-body"><b>Cerwin-Vega</b>（高声压扬声器)—— 由独立公司 Cerwin-Vega Inc. 运营,与 inMusic 无关。当年 inMusic 从 Gibson 收购的是 <b>Stanton</b>,两者易混淆。</div></li>
+      <li><span class="x">别家所有</span><div class="li-body"><b>Sequential / Oberheim</b>（传奇模拟合成器)—— 属 <b>Focusrite</b>,并非 inMusic;曾在个别资料中被误列入 inMusic 硬件名录。</div></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">
+  数据来源：inmusicbrands.com 及各品牌官网(native-instruments.com、akaipro.com、moogmusic.com、denondj.com、rane.com、numark.com、alesis.com、m-audio.com、headrushfx.com、altoprofessional.com、ionaudio.com、airmusictech.com、bfddrums.com、denonpro.com、marantzpro.com、sonivoxmi.com、plugin-alliance.com、2getheraudio.com、marqlighting.com、stantondj.com、enginedj.com、soundswitch.com)+ 收购/所有权新闻交叉核实。&nbsp;编制于 2026-07-16。产品线随季节更新,标 <span class="pill" style="margin:0">停产</span> / <span class="pill" style="margin:0">停更</span> 者为已停产、EOL 或遗留产品。&nbsp;点击型号名 <span style="color:var(--accent)">↗</span> 跳转官网产品页;个别型号无独立页面时链接到该品牌最接近的分类页或官网首页(如已停产型号、Sonivox 单页目录);MARQ Lighting 官网已停用故无链接。<br><br>本页为非官方整理的资料汇编,仅供参考与学习;所有品牌名称、产品名称与商标均归其各自所有者所有,本页与相关公司无隶属或授权关系。
+</footer>
+
+<script>
+const CATS=[
+ {key:"dj",   name:"DJ 与演出",       cvar:"--c-dj"},
+ {key:"prod", name:"音乐制作与软件",   cvar:"--c-prod"},
+ {key:"inst", name:"乐器",            cvar:"--c-inst"},
+ {key:"audio",name:"专业与消费音频",   cvar:"--c-audio"},
+ {key:"light",name:"舞台灯光",         cvar:"--c-light"},
+];
+const D=(n,c,d,x)=>({n,c,d,x:!!x});
+const BRANDS=[
+/* ---------------- DJ 与演出 ---------------- */
+{cat:"dj",name:"Denon DJ",site:true,tag:"高端专业 DJ 演出设备",p:[
+ D("Prime 4+","一体式 DJ 系统","旗舰四轨独立一体机,10 英寸触屏、四路混音与人声分离,无需电脑演出"),
+ D("Prime Go+","便携一体机","内置锂电池的便携双轨独立系统,7 英寸触屏、Wi‑Fi 流媒体与人声分离"),
+ D("SC Live 4","一体式控制器","四轨独立控制器,内置扬声器、7 英寸触屏与灯光控制,运行 Engine DJ"),
+ D("SC Live 2","一体式控制器","双轨版 SC Live,内置扬声器与 7 英寸触屏"),
+ D("SC6000 Prime","独立媒体播放器","专业独立播放机,10.1 英寸多点触屏、双层播放与流媒体"),
+ D("SC6000M Prime","独立媒体播放器","SC6000 的马达盘版本,8.5 英寸真实马达唱盘"),
+ D("X1850 Prime","俱乐部混音器","四路专业数字混音器,内置效果与 Prime 系统连接"),
+ D("LC6000 Prime","扩展控制器","Prime 系统演出扩展副机,为 SC 播放器增加一层控制"),
+ D("VL12 Prime","DJ 唱盘机","石英锁定直驱 DJ 唱盘,高扭矩配可调 RGB 灯环"),
+]},
+{cat:"dj",name:"Rane",site:true,tag:"打碟 / battle 专业混音",p:[
+ D("Seventy‑Two MKII","battle 混音器","两路旗舰 Serato battle 混音器,4.3 寸触屏、双套打击垫与 MAG FOUR 推子"),
+ D("Seventy","battle 混音器","两路 Serato battle 混音器,精简自 Seventy‑Two"),
+ D("RANE ONE MKII","一体式控制器","内置双马达走带盘的一体式 Serato 控制器"),
+ D("RANE FOUR","软件控制器","四轨 Serato Stems 控制器,支持人声/器乐实时分离"),
+ D("Performer","马达一体控制器","四路马达走带一体控制器,7 寸铝盘与 OLED 显示"),
+ D("Twelve MKII","马达唱盘控制器","12 寸马达唱盘控制器,支持 Serato/Traktor DVS"),
+ D("System One","一体式马达系统","全球首款马达走带独立一体机,双 7.2 寸马达盘、板载 Stems 渲染"),
+]},
+{cat:"dj",name:"Numark",site:true,tag:"入门 / 性价比 DJ 设备",p:[
+ D("Mixtrack Pro FX","软件控制器","双轨 Serato/VirtualDJ 控制器,配效果拨片与内置声卡"),
+ D("Mixtrack Platinum FX","软件控制器","双轨控制器,带屏走带盘显示 BPM 与波形"),
+ D("Mixtrack Go","入门控制器","超轻便携入门控制器,支持 Stems、蓝牙 MIDI 与 Fade FX"),
+ D("Party Mix III","入门灯光控制器","内置灯光秀并新增 Stems 控制的入门控制器"),
+ D("Party Mix II","入门灯光控制器","内置多彩灯效的双轨入门控制器"),
+ D("DJ2GO2 Touch","口袋控制器","掌上双轨迷你控制器,电容触摸走带盘加内置声卡"),
+ D("NS7 II","马达走带控制器","经典四轨马达唱盘 Serato 控制器,旗舰战斗机型"),
+ D("NTX1000","DJ 唱盘机","高扭矩直驱专业唱盘,直线臂设计"),
+ D("PT01 Scratch","便携唱盘","手提箱式便携黑胶唱盘,配 Scratch 搓碟开关"),
+ D("Numark Scratch","battle 混音器","两路 Serato 搓碟混音器,配 Innofader 推子与 DVS"),
+ D("RPM‑100","便携 battle 混音器","Raiden Fader 便携双路混音器,内置电池与迷你推子"),
+ D("M6 USB","模拟混音器","四路 USB DJ 混音器,三段 EQ、麦克风输入与内置录音声卡"),
+ D("NS4FX","软件控制器","4 通道专业 DJ 控制器,带硬件效果器与丰富专业输入输出"),
+ D("Mixstream Pro","一体式控制器","带触摸屏的独立式流媒体 DJ 一体机"),
+ D("Mixstream Pro +","一体式控制器","带内置音箱与流媒体的独立 DJ 一体机"),
+ D("Mixstream Pro Go","一体式控制器","内置电池与音箱的全无线独立流媒体 DJ 一体机"),
+ D("Party Mix Live","入门灯光控制器","内置音箱与灯光秀的入门级派对 DJ 控制器"),
+]},
+{cat:"dj",name:"Engine DJ",site:true,tag:"驱动独立硬件的 DJ 软件平台",p:[
+ D("Engine DJ OS","嵌入式系统","运行于 Denon/Rane 独立硬件的嵌入式操作系统"),
+ D("Engine DJ Desktop","电脑软件","桌面音乐库管理与准备软件,分析曲目并同步至硬件"),
+ D("Engine DJ 5.0","软件版本","最新免费大版本,新增板载 Stems 渲染与 RGB 彩色波形"),
+]},
+{cat:"dj",name:"SoundSwitch",site:true,tag:"DJ 灯光自动同步",p:[
+ D("SoundSwitch Desktop","灯光软件","DMX/飞利浦 Hue 灯光自动化软件,与主流 DJ 软硬件同步"),
+ D("Control One","灯光控制器","专业 DMX 灯光控制器,双 USB 口、1024 通道加演出触发键"),
+ D("Micro DMX Interface","DMX 接口","紧凑 USB 转 DMX 接口,随节拍网格自动灯光秀"),
+]},
+{cat:"dj",name:"Stanton",site:false,tag:"DJ 唱机与唱头(已复活)",note:"inMusic 自有;经典老产品线多数停产,近年推出 STX 唱机与 DS4 唱头。",p:[
+ D("STX Turntable","便携唱机","便携搓碟黑胶唱机,内置 Innofader Nano 迷你推子"),
+ D("DS4 Cartridge","唱头","耐用多用途专业 DJ 唱头,适合搓碟/混音/DVS"),
+ D("DS4 Replacement Stylus","唱针","DS4 唱头替换唱针"),
+ D("ST.150 / STR8‑150","直驱唱机","高扭矩直驱 DJ 唱机,经典型号",true),
+ D("500 系列","唱头","经典入门 DJ 唱头",true),
+ D("680 / 680.V3","唱头","高端 DJ / 搓碟唱头",true),
+ D("Groovemaster","唱头","耐用搓碟唱头",true),
+ D("ScratchAmp","DVS 接口","Final Scratch 系统音频接口,历史产品",true),
+]},
+{cat:"dj",name:"MixMeister",site:false,tag:"自动混音 DJ 软件(EOL)",note:"inMusic 自有(挂 Numark 品牌下),已终止开发,仅遗留维护。",p:[
+ D("Fusion 7.7","DJ 混音软件","带自动混音/节拍匹配的 DJ 制作软件,最终版",true),
+ D("Fusion + Video","DJ 混音(视频)","Fusion 的视频混音版本",true),
+ D("Express","DJ 混音(简化)","入门级自动混音软件",true),
+ D("Studio","DJ 混音(录音室)","面向录音室的混音制作软件",true),
+ D("BPM Analyzer","BPM 分析","免费批量 BPM 检测工具",true),
+]},
+
+/* ---------------- 音乐制作与软件 ---------------- */
+{cat:"prod",name:"Native Instruments",site:true,tag:"软硬件一体的制作 / DJ 生态(2026 收购)",note:"当前旗舰套装已由 Komplete 15 升级为 Komplete 26。",p:[
+ D("Komplete Start","Komplete 套装","免费入门套装,精选乐器/效果器体验 NI 生态"),
+ D("Komplete Select","Komplete 套装","入门付费档(约 $99),精选核心乐器与效果器"),
+ D("Komplete 26 Standard","Komplete 套装","标准档(约 $549),含 Kontakt 8、Massive X、Guitar Rig 7 Pro 等 90+"),
+ D("Komplete 26 Ultimate","Komplete 套装","旗舰档(约 $1249),加入高端管弦与影视配乐等 150+ 乐器"),
+ D("Komplete 26 Collector's Edition","Komplete 套装","顶配典藏档(约 $1949),340+ 产品与 18 万+ 音色"),
+ D("Komplete Now","Komplete 订阅","按月订阅,云端访问 Komplete 乐器与音色库"),
+ D("Kontakt 8","软件采样器","行业标准采样器平台,可加载海量 NKS 采样库"),
+ D("Kontakt 8 Player","软件采样器","免费 Kontakt 播放器,运行已授权采样库"),
+ D("Massive X","软件合成器","旗舰波表合成器,擅长现代电子 / 低音音色"),
+ D("Massive","软件合成器","经典波表合成器,以肥厚 bass 与 lead 著称"),
+ D("FM8","软件合成器","FM(频率调制)合成器,音色明亮清脆"),
+ D("Reaktor 6","模块化平台","模块化声音设计与 DSP 搭建平台,可自建合成器/效果器"),
+ D("Reaktor 6 Player","模块化平台","免费 Reaktor 运行环境,播放 Ensembles/Blocks"),
+ D("Battery 4","鼓采样器","面向电子/嘻哈的鼓采样器,pad 矩阵工作流"),
+ D("Guitar Rig 7 Pro","吉他效果","吉他/低音放大器与踏板效果模拟套件,也可作通用多效果"),
+ D("Monark","软件合成器","复刻 Minimoog 肥厚音色的模拟单音合成器"),
+ D("Razor","软件合成器","所有声音以可视化谐波实时呈现的加法合成器"),
+ D("Form","软件合成器","以采样为声源、可拉伸塑形的复音合成器"),
+ D("Rounds","软件合成器","可在多段声音间切换编排的序列化合成器"),
+ D("Super 8","软件合成器","轻量易用的 8 音复音合成器"),
+ D("Kontour","软件合成器","相位调制 / 物理建模合成器"),
+ D("Prism","软件合成器","模态共振建模合成器,擅长金属/打击音色"),
+ D("Play Series – Analog Dreams","Play 系列","复古模拟合成音色乐器,宏旋钮快速塑形"),
+ D("Play Series – Ethereal Earth","Play 系列","原声与合成融合的空灵世界音色"),
+ D("Play Series – Hybrid Keys","Play 系列","处理过的混合键盘音色(钢琴/电钢叠合成)"),
+ D("Play Series – Electric Keys","Play 系列","电钢琴/键盘音色乐器(Komplete 26 新增)"),
+ D("Session Guitarist – Strummed Acoustic 2","Session 系列","原声吉他扫弦演奏库,含真人录制节奏型"),
+ D("Session Guitarist – Picked Acoustic","Session 系列","基于 1973 Martin 的原声吉他指弹库"),
+ D("Session Guitarist – Electric Sunburst / Deluxe","Session 系列","电吉他扫弦与 riff 演奏库,Deluxe 版更丰富"),
+ D("Session Guitarist – Acoustic Sunburst Deluxe","Session 系列","高端 jumbo 原声吉他演奏库"),
+ D("Session Guitarist – Electric Vintage","Session 系列","复古电吉他音色与演奏型库"),
+ D("Session Strings 2","Session 系列","中小型弦乐组演奏库,适合流行/影视"),
+ D("Session Strings Pro 2","Session 系列","专业级弦乐组库,分组/发音更全面"),
+ D("Session Horns","Session 系列","小型铜管/管乐组演奏库"),
+ D("Session Horns Pro","Session 系列","专业铜管组库,含更丰富编排引擎"),
+ D("Session Bassist – Prime Bass","Session 系列","真人录制的电贝斯演奏库"),
+ D("Session Bassist – Upright Bass","Session 系列","原声立式(低音提琴)贝斯库"),
+ D("Raum","软件效果·混响","从空间感到无限延音的创意混响"),
+ D("Replika XT","软件效果·延迟","含磁带/扩散等风格的多模式延迟"),
+ D("Traktor Pro 4","DJ 软件","旗舰 DJ 软件,支持控制器/DVS/CDJ 与 stem 混音"),
+ D("Traktor Kontrol S4 MK3","DJ 控制器","4 声道旗舰控制器,Haptic Drive 电动盘与双彩屏"),
+ D("Traktor Kontrol S2 MK3","DJ 控制器","2 声道便携控制器,内置声卡"),
+ D("Traktor Kontrol S3","DJ 控制器","4 声道控制器,触敏 EQ 与内置声卡"),
+ D("Traktor Kontrol X1 MK3","DJ 模块","模块化效果/循环/走带控制器,5 块 OLED 屏"),
+ D("Traktor Kontrol Z1 MK2","DJ 混音","紧凑 2 声道混音控制器,内置声卡"),
+ D("Traktor MX2","DJ 控制器","2 声道创意型 DJ 控制器"),
+ D("Komplete Kontrol S49 MK3","S 系列键盘","49 键半配重智能键盘,复音触后与光导条,深度 NKS"),
+ D("Komplete Kontrol S61 MK3","S 系列键盘","61 键半配重版本"),
+ D("Komplete Kontrol S88 MK3","S 系列键盘","88 键全配重锤感,业界首款锤感+复音触后键盘"),
+ D("Komplete Kontrol A25","A 系列键盘","25 键精简智能键盘,OLED 屏与 Smart Play"),
+ D("Komplete Kontrol A49","A 系列键盘","49 键版本"),
+ D("Komplete Kontrol A61","A 系列键盘","61 键版本"),
+ D("Komplete Kontrol M32","M 系列键盘","32 迷你键紧凑控制键盘,最入门便携档"),
+ D("Maschine (MK3)","Maschine 硬件","旗舰 beat 制作/采样控制器,双屏 16 pad 加内置声卡"),
+ D("Maschine+","Maschine 硬件","独立式(免电脑)Maschine 制作工作站"),
+ D("Maschine Mikro (MK3)","Maschine 硬件","紧凑入门 Maschine 控制器,单屏 16 pad"),
+ D("Komplete Audio 1","音频接口","简易 2 进 2 出 USB 声卡,1 路话放"),
+ D("Komplete Audio 2","音频接口","2 进 2 出 USB 声卡,双话放"),
+ D("Komplete Audio 6 MK2","音频接口","6 进 6 出 USB 声卡,含 MIDI 与 CV 控制"),
+ D("Traktor Kontrol F1","DJ 控制器","Traktor Remix Deck 与 Stems 专用控制器,4×4 RGB 触发垫加推子"),
+]},
+{cat:"prod",name:"Akai Professional",site:true,tag:"MPC 独立制作机与 MIDI 控制器",p:[
+ D("MPC X","MPC 独立机","旗舰级独立音乐制作工作站,大触屏加丰富模拟 I/O"),
+ D("MPC X SE","MPC 独立机","MPC X 特别版,升级存储与音色库,系列旗舰"),
+ D("MPC Live II","MPC 独立机","便携独立制作机,内置扬声器与充电电池"),
+ D("MPC One","MPC 独立机","紧凑入门级独立机,配 16 打击垫与触屏"),
+ D("MPC One+","MPC 独立机","MPC One 升级版,新增 Wi‑Fi/蓝牙与内置扬声器"),
+ D("MPC Key 61","MPC 独立机","键盘式独立工作站,61 全尺寸键加 MPC 打击垫"),
+ D("MPC Key 37","MPC 独立机","紧凑键盘式独立机,37 键加 16 打击垫"),
+ D("MPC Studio","MPC 控制器","超薄 MPC 硬件控制器,搭配电脑版 MPC 软件"),
+ D("Force","独立制作 / 演出","面向电子乐的独立 clip 网格工作站,8×8 RGB 垫加触屏"),
+ D("MPK Mini MK3","MIDI 键盘","25 迷你键便携控制器,8 打击垫加 OLED 屏"),
+ D("MPK Mini Play MK3","MIDI 键盘","带内置音色与扬声器的迷你键盘,可独立发声"),
+ D("MPK Mini Plus","MIDI 键盘","加长版迷你键控制器,37 键并内置音序器与 CV/Gate"),
+ D("MPK225","MIDI 键盘","25 全尺寸半配重键控制器,RGB 打击垫加 LCD"),
+ D("MPK249","MIDI 键盘","49 全尺寸半配重键控制器,旋钮/推子与 RGB 垫"),
+ D("MPK261","MIDI 键盘","61 全尺寸半配重键旗舰控制器"),
+ D("MPK88","MIDI 键盘","88 键配重锤感 MIDI 键盘控制器"),
+ D("MPD218","MPD 打击垫","16 打击垫紧凑 USB 控制器,6 旋钮加 3 组库"),
+ D("MPD226","MPD 打击垫","16 垫控制器,增设推子、旋钮与走带按钮"),
+ D("MPD232","MPD 打击垫","旗舰打击垫控制器,16 RGB 垫加内置 32 步音序器"),
+ D("APC40 MkII","Ableton 控制器","面向 Ableton Live 的网格控制器,clip 触发与混音一体"),
+ D("APC64","Ableton 控制器","高端网格控制器,64 复触后压 RGB 垫加 8 触控条"),
+ D("APC Key 25 MK2","Ableton 控制器","紧凑控制器,25 键加 40 RGB clip 触发垫"),
+ D("APC Mini MK2","Ableton 控制器","轻薄 64 RGB 垫加推子的 clip 触发控制器"),
+ D("LPD8","LP 便携控制器","超便携 8 打击垫加 8 旋钮的迷你 USB 控制器"),
+ D("LPK25","LP 便携控制器","超便携 25 迷你键 USB MIDI 键盘控制器"),
+ D("MPC 2","MPC 软件","桌面版 MPC 制作软件,可独立或作插件,与硬件互通"),
+ D("MPC Beats","MPC 软件","免费入门版 MPC 制作软件,含内置音色"),
+ D("MPC XL","MPC 独立机","第二代八核处理器、16GB 内存、运行 MPC3 系统的全新旗舰独立制作中心"),
+ D("MPC Live III","MPC 独立机","新一代便携独立 MPC,3D 感应打击垫、电池供电与内置监听音箱"),
+ D("MPC Live 3 Retro","MPC 独立机","MPC Live III 的复古米色特别版,致敬初代经典 MPC 外观"),
+ D("MPC Sample","MPC 独立机","最亲民便携的独立采样机,灵感源自经典 MPC60"),
+ D("MPK Mini IV","MIDI 键盘","重新设计的第四代迷你 MIDI 键盘控制器,全新键床与音高/调制轮"),
+ D("MPK Road 88","MIDI 键盘","88 键锤感便携舞台 MIDI 键盘,内置 USB 声卡与多路踏板输入"),
+ D("Akai Fire","专用控制器","首款专为 FL Studio 打造的硬件控制器,4×16 RGB 打击垫矩阵加 OLED 屏"),
+]},
+{cat:"prod",name:"AIR Music Tech",site:true,tag:"虚拟乐器与效果插件",p:[
+ D("Hybrid 3","合成器(模拟+波表)","融合模拟温暖与数字波表的高清合成器,双部分各含双 3 振荡器"),
+ D("Vacuum Pro","复音模拟合成器","带真空管模拟、4 振荡器的复古建模合成器"),
+ D("Loom II","模块化加法合成器","由 34 个模块生成多达 512 分音的加法合成器,带 Morph Pad"),
+ D("Fabric","多重采样合成引擎","源自 MPC/Force 平台的现代多重采样合成/音色设计引擎"),
+ D("Solina","弦乐合奏合成器","经典 Solina 弦乐合奏复刻,含 6 种音色"),
+ D("Tube Synth","模拟建模合成器","基于 Vacuum Pro 真空管建模的复音合成器"),
+ D("Boom","鼓机","含 10 套经典电子鼓组与步进音序器的软件鼓机"),
+ D("Xpand!2","多音色工作站","一体化多音色工作站,每音色可激活 4 个音源槽"),
+ D("Structure 2","多音色采样器","内置采样库的 128 级多音色采样器乐器"),
+ D("Strike 2","虚拟鼓手","顶级鼓组库加演奏引擎,实时控制力度/复杂度/律动"),
+ D("Transfuser 2","循环 / 律动乐器","可切片、重混、时间拉伸循环,含 3200+ 循环"),
+ D("Velvet","电钢琴乐器","集成 5 款传奇 60‑70 年代电钢与内置效果"),
+ D("Mini Grand","原声钢琴","含 7 种三角钢琴音色的简洁钢琴插件"),
+ D("DB‑33","拉杆风琴","复刻 Hammond B3 等音色,含旋转喇叭模拟"),
+ D("Creative FX Collection Plus","效果器合集","约 20+ 款经典混音/母带效果套装"),
+ D("AIEP3(乐器扩展包 3)","乐器 / 效果合辑","Select/Complete/Premier 三档,Complete 含约 20 款乐器加 70GB+ 素材"),
+ D("Iona","合成器","Roland SH-101 风格单声道模拟合成器插件(2025 新品)"),
+ D("Mellotron","虚拟乐器","经典磁带采样键盘 Mellotron 的复刻插件"),
+ D("Drum Synth","鼓机","融合 FM、模拟建模与物理建模的鼓声合成器插件"),
+ D("Bassline","合成器","真空管建模合成的经典单声道贝斯合成器"),
+ D("Organ","虚拟乐器","带九音栓、十套音轮及旋转喇叭效果的电风琴插件"),
+ D("Electric","虚拟乐器","电钢琴合集,含 Rhodes、Wurlitzer、FM 等经典键盘"),
+ D("Essential Keyboards","乐器合集","集成 13 款键盘乐器于单一播放器的键盘合集"),
+ D("The Keys Collection","乐器合集","键盘合集(Stage Piano、Stage EP、Organ)"),
+ D("MPC Instruments Collection","乐器合集","逾 5GB 内容、5000+ 预置的 MPC 乐器合集"),
+ D("Creative FX Collection 2","效果器合集","40 款高品质效果插件合集(含 12 款新插件)"),
+ D("Flavor Pro","效果器","六模块 Lo-Fi 多效处理插件(磁带饱和、抖动、失真、黑胶噪声等)"),
+ D("Tape Effects Collection","效果器合集","三款磁带类效果(饱和、回声、双轨)合集"),
+ D("Tape Double Track","效果器","复刻 1960 年代 ADT 磁带双轨录音技法的效果插件"),
+ D("Ether","效果器·混响","为音源增添深度与质感的算法混响插件"),
+ D("Multiband Filterbank","效果器","复刻经典硬件多段滤波器的滤波效果插件"),
+ D("Lo-Fly Dirt","效果器","提取音源低保真质感的失真染色插件"),
+ D("Vocal FX Collection","效果器合集","人声处理效果合集"),
+ D("Vocal Tuner","效果器","自动人声音准修正插件"),
+ D("Sprite","效果器","多合一效果处理器,集失真、调制、延迟、混响、变调与 EQ"),
+ D("Vocal Distortion","效果器","人声失真/饱和染色插件"),
+ D("Delay Pro","效果器·延迟","专业级延迟效果插件"),
+]},
+{cat:"prod",name:"BFD",site:true,tag:"专业原声鼓采样软件",note:"inMusic 自有(2020 从 FXpansion 接手)。",p:[
+ D("BFD3(现为 3.5)","旗舰鼓软件","基于深度多重采样真实鼓组制作逼真鼓轨(约 51 套核心鼓组)"),
+ D("BFD Player","免费鼓播放器","完全免费的鼓插件,含约 5GB 音色库与 340 条律动"),
+ D("Expansion Packs","附加音色内容","附加采样鼓组/军鼓/镲片音色库,载入 BFD3 或 Player"),
+ D("Groove Packs","附加律动内容","预演奏的鼓点 MIDI 合集,可由任意已装鼓组触发"),
+]},
+{cat:"prod",name:"Sonivox",site:false,tag:"软件虚拟乐器(趋于遗留)",note:"inMusic 自有;部分产品已无后续更新。",p:[
+ D("Eighty Eight Ensemble","钢琴 / 键盘","采样九尺三角钢琴、每键最多 16 力度层的旗舰钢琴音源"),
+ D("Orchestral Companion(弦/铜/木)","管弦","弦乐/铜管/木管分组管弦音源,面向影视配乐"),
+ D("Film Score Companion","捆绑套装","打包 Orchestral Companion 等的配乐套装"),
+ D("Singer & Songwriter","捆绑套装","面向唱作人的原声吉他/钢琴/贝斯合集"),
+ D("Vocalizer Pro","人声 / 效果","基于话筒或乐器输入的实时人声合成与声码处理"),
+ D("Playa","都市 / 嘻哈","Hip‑Hop/R&B 制作用的都市风虚拟乐器工作站"),
+ D("Big Bang Universal / Cinematic","鼓 / 打击乐","通用电子/原声鼓音源 与 电影级史诗打击乐音源"),
+ D("Wobble","合成器","Dubstep/Grime 低频“摇摆”音色生成器"),
+ D("Twist","合成器","频谱变形(spectral morphing)合成器"),
+ D("Solina Redux","合成器","经典 Solina 弦乐机复刻"),
+ D("Stratum / FM Piano","合成器 / 键盘","多层合成器 与 FM 合成电钢琴"),
+ D("Session / Blue Jay / Tony Coleman Drums","鼓","系列原声鼓组音源(含名鼓手采样)"),
+ D("Atsia Percussion / Silk Road","世界打击乐","非洲/丝路等世界民族打击乐音源"),
+ D("Bright Electric Guitar / Taylor Acoustic 等","原声乐器","电吉他/木吉他/贝斯/口琴/羽管键琴单件音源"),
+]},
+{cat:"prod",name:"Plugin Alliance / Brainworx",site:false,tag:"混音母带插件平台与厂牌",note:"随 2026 年 NI 交易进入 inMusic;此前属 Soundwide。",p:[
+ D("bx_console(SSL 9000 J/N 等)","通道条","官方授权 SSL 等调音台通道条模型,含 TMT 逐通道容差建模"),
+ D("bx_digital V3","均衡","M/S 母带级数字均衡器"),
+ D("bx_masterdesk","母带","单插件内的完整高端模拟母带处理链"),
+ D("bx_oberhausen","合成器","带 TMT 与 M/S 特性的虚拟模拟合成器"),
+ D("bx_XL V2","限制器","M/S 母带限制器"),
+ D("bx_saturator V2","饱和","M/S 饱和/谐波染色处理器"),
+ D("bx_refinement","母带修饰","去除刺耳高频的母带润色工具"),
+ D("Plugin Alliance 目录","平台 / 发行","聚合 SSL、Focusrite、Lindell、Shadow Hills 等官方授权插件的平台"),
+]},
+{cat:"prod",name:"2getheraudio",site:false,tag:"订阅式合成器 / 效果插件市集",p:[
+ D("OpZilla","FM 合成器","64 算法 FM 合成器"),
+ D("Cheeze Machine PRO / 2","合成器","弦乐机 + 减法合成器(2 为免费版)"),
+ D("RE4ORM / RE4ORM FX","加法合成器 / 效果","可绘制波形的加法合成器 / 可绘制重混效果器"),
+ D("G8TOR","序列合成器","内置强力步进音序器的合成器"),
+ D("K1CK / SN4RE / CL4P","鼓合成","底鼓 / 军鼓 / 拍手制作器"),
+ D("Ticky Clav 2","键盘(免费)","免费 Clavinet 电颤琴仿真"),
+ D("Space Duck","效果","带闪避的延迟 + 混响效果"),
+ D("RICH / RICH Drums","母带","一键母带处理 / 鼓总线母带处理器"),
+ D("ST3REO / V1NYLLA","效果","立体声扩展调制 / 可绘制黑胶模拟器"),
+]},
+
+/* ---------------- 乐器 ---------------- */
+{cat:"inst",name:"Moog Music",site:true,tag:"传奇模拟合成器与特雷门琴(2023 收购)",p:[
+ D("Moog One","复音合成器","8/16 音复音旗舰模拟合成器,三振荡器、可分区分层"),
+ D("Muse","复音合成器","8 音双音色模拟复音合成器(2024),比 Moog One 更亲民的现代旗舰"),
+ D("Minimoog Model D","单音合成器","经典 Minimoog 单音合成器复刻,三振荡器加招牌梯形滤波"),
+ D("Subsequent 37","单音 / 半复音","双音复音模拟合成器,两振荡器多驱动,Sub 37 升级版"),
+ D("Subsequent 25","单音 / 半复音","精简紧凑的双音复音模拟合成器"),
+ D("Messenger","单音合成器","2025 全新单音模拟合成器,双振荡器带波形调制"),
+ D("Grandmother","半模块化","内置弹簧混响与音序器的半模块化合成器,无需连线"),
+ D("Matriarch","半模块化","4 音复音半模块化,四振荡器加立体声模拟延迟"),
+ D("Mother‑32","半模块化","含 32 步音序器与跳线排的半模块化,Eurorack 兼容"),
+ D("DFAM","半模块化","专注打击乐/节奏的半模块化模拟合成器"),
+ D("Subharmonicon","半模块化","基于次谐波与多重节奏音序,生成复调律动"),
+ D("Spectravox","半模块化","2024 半模块化频谱处理器,可作 10 段模拟声码器"),
+ D("Mavis","紧凑半模块化","需自组装的单振荡器半模块化合成器,带波形折叠"),
+ D("Labyrinth","紧凑半模块化","2024 双振荡器生成式半模块化,擅长自演化序列"),
+ D("Etherwave Theremin (+)","特雷门琴","经典 Etherwave 特雷门琴,+ 版增加 CV 输出"),
+ D("Claravox Centennial","特雷门琴","特雷门琴百年纪念旗舰,兼具传统与数字模式"),
+ D("Moogerfooger(硬件 100 系列)","效果器硬件","经典 Moogerfooger 模拟效果踏板复刻,2023 重新量产"),
+ D("Moogerfooger 插件合集","效果器软件","全套 8 款 Moogerfooger 效果的软件版(AU/AAX/VST3)"),
+ D("Minifooger 系列","效果器硬件","小型模拟效果踏板系列(Delay/Drive/Ring 等)",true),
+ D("Minitaur","桌面单音合成器","紧凑桌面模拟贝斯合成器模块",true),
+ D("Model 15 (App)","iOS / 软件","Model 15 模块化合成器 App,含 AUv3 插件模式"),
+ D("Animoog Z (App)","iOS / 软件","基于各向异性合成的触控合成器 App"),
+ D("Model D (App)","iOS / 软件","Minimoog Model D 官方移动 App 复刻"),
+ D("Filtatron (App)","iOS / 软件","基于 Moog 梯形滤波器的滤波/效果与采样 App"),
+ D("Bob Moog Tribute Edition Minimoog Model D","单音合成器","限量 500 台手工打造的 Minimoog Model D 纪念版,橡木箱体配 FATAR 触后键床"),
+ D("Mariana","软件合成器","双振荡器立体声贝斯合成器插件(VST/AU/AAX)"),
+]},
+{cat:"inst",name:"Alesis / Alesis Drums",site:true,tag:"电子鼓、数码钢琴与录音室监听",p:[
+ D("Strata Prime","电子鼓","旗舰电子鼓,BFD3 音源、10.1 寸触屏、全网面鼓与 360° 三区镲"),
+ D("Strata Core","电子鼓","曲面钢架紧凑中端款,BFD3 音源加 7 寸触屏"),
+ D("Strata Club","电子鼓","省空间 7 件套,Core 音源(BFD3)、7 寸触屏加蓝牙"),
+ D("Nitro Ultimate","电子鼓","Nitro 系列顶配,全网面大配置钢架结构"),
+ D("Nitro Pro","电子鼓","钢架、加深网面鼓、双区嗵鼓,网面底鼓可用双踩"),
+ D("Nitro Max","电子鼓","网面入门升级款,440 音色、36 套鼓加蓝牙"),
+ D("Nitro Mesh","电子鼓","经典网面入门八件套,性价比之选"),
+ D("Crimson III","电子鼓","九件套网面套鼓,模块含 BFD 音色与 SD 卡采样"),
+ D("Turbo Max","电子鼓","全能入门 7 件套橡胶鼓面,内置学习功能"),
+ D("Debut","电子鼓","面向儿童/初学者的紧凑网面一体套鼓"),
+ D("Strike MultiPad","采样打击垫","9 垫旗舰采样打击垫,7000+ 音色、32GB、采样加循环"),
+ D("SamplePad","采样打击垫","基础款采样触发打击垫"),
+ D("SamplePad 4","采样打击垫","4 垫紧凑款,25 常用音色加 SD 卡扩展"),
+ D("SamplePad Pro","采样打击垫","8 垫款,200+ 内置音色与 SD 卡加载"),
+ D("Strike Amp 12 MK2","电鼓监听音箱","12 寸有源电鼓/键盘监听音箱,2000W 峰值"),
+ D("Strike Amp 8","电鼓监听音箱","8 寸紧凑有源电鼓监听音箱"),
+ D("Recital","数码钢琴","88 半配重键入门数码钢琴"),
+ D("Recital Home","数码钢琴","88 渐进锤感配重键家用款,25 种音色"),
+ D("Recital Play","便携键盘","88 非配重键便携款,480 音色,可电池加蓝牙"),
+ D("Recital Pro","数码钢琴","88 全配重锤感键进阶数码钢琴"),
+ D("Prestige","数码钢琴","88 渐进锤感键,三角钢琴多重采样"),
+ D("Concert","数码钢琴","88 半配重键、内置音箱的家用数码钢琴"),
+ D("Elevate 3","桌面监听音箱","3 寸有源桌面监听音箱(含 MKII)"),
+ D("Elevate 4","桌面监听音箱","4 寸有源桌面监听音箱,另有蓝牙版"),
+ D("Elevate 5","有源监听音箱","5 寸有源监听,源自 Monitor One 技术,另有蓝牙版"),
+ D("Monitor One MkII","无源监听音箱","6.5 寸经典无源专业录音室监听音箱"),
+ D("Turbo Mesh Kit","电子鼓","7 件式网面电子鼓套件,配 Turbo 鼓脑与学习功能"),
+ D("Command Mesh Special Edition","电子鼓","大尺寸网面鼓皮特别版电子鼓套件,含全套配件"),
+ D("Recital Pro MKII","数码钢琴","88 键锤感数码钢琴升级版"),
+ D("Prestige Artist","数码钢琴","88 键分级锤感、多重采样音色的高端家用数码钢琴"),
+ D("Virtue","数码钢琴","88 键力度感应、360 种音色、30 瓦音箱的入门数码钢琴"),
+ D("Recital 61","数码钢琴","61 键半配重数码钢琴,20 瓦音箱、10 种音色"),
+ D("V25 MKII","MIDI 键盘","25 键力度感应 MIDI 键盘控制器,带打击垫"),
+ D("V49 MKII","MIDI 键盘","49 键力度感应 MIDI 键盘控制器,带打击垫"),
+ D("V61 MKII","MIDI 键盘","61 键力度感应 MIDI 键盘控制器,带打击垫"),
+ D("Q Mini","MIDI 键盘","32 迷你键便携 USB MIDI 控制器"),
+ D("Q49 MKII","MIDI 键盘","49 键全尺寸入门 MIDI 键盘控制器"),
+ D("Q88 MKII","MIDI 键盘","88 键全尺寸入门 MIDI 键盘控制器"),
+ D("Vmini","MIDI 键盘","25 迷你键便携 MIDI 控制器,带旋钮与打击垫"),
+ D("Vortex Wireless 2","MIDI 键盘","无线肩背式键盘控制器(keytar)"),
+ D("VI25","MIDI 键盘","25 键半配重 MIDI 键盘控制器,带打击垫与旋钮"),
+ D("VI49","MIDI 键盘","49 键半配重 MIDI 键盘控制器,带打击垫与旋钮"),
+ D("VI61","MIDI 键盘","61 键半配重 MIDI 键盘控制器,带打击垫与旋钮"),
+ D("Harmony 61 MK3","便携电子琴","61 键便携电子琴,内置音箱与教学功能"),
+ D("Harmony 61 Pro","便携电子琴","61 键便携电子琴专业版,音色更丰富"),
+ D("Talent 61","便携电子琴","61 键入门便携电子琴"),
+ D("Harmony 32","便携电子琴","32 迷你键便携电子琴,适合儿童入门"),
+ D("Melody 54","便携电子琴","54 键便携电子琴套装,含琴架与耳机"),
+ D("Harmony 54","便携电子琴","54 键便携电子琴,内置音箱"),
+ D("Melody 61 MKII","便携电子琴","61 键便携电子琴套装(含琴架、谱架、耳机、话筒)"),
+ D("Harmony 61 MKII","便携电子琴","61 键便携电子琴,内置 300 音色与教学模式"),
+ D("Melody 61 Mk 4","便携电子琴","61 键便携电子琴全套装第四代"),
+ D("Harmony 61","便携电子琴","61 键便携电子琴,内置音箱"),
+ D("Teachers Choice 61","便携电子琴","61 键教学用便携电子琴套装"),
+ D("Elevate 5 MKII","有源监听音箱","5 英寸有源桌面监听音箱升级版"),
+ D("DRP100","耳机","全封闭电子鼓/监听隔音耳机"),
+ D("SRP100","耳机","录音室封闭式监听耳机"),
+ D("MultiMix 8 USB FX","调音台","8 通道带效果 USB 调音台"),
+ D("MultiMix 4 USB FX","调音台","4 通道带效果 USB 调音台"),
+ D("MultiMix 12R","调音台","12 通道机架式调音台"),
+ D("MultiMix 10 Wireless","调音台","10 通道带蓝牙/无线的调音台"),
+ D("MicLink Wireless","无线系统","将有线动圈话筒转为无线的 XLR 无线系统"),
+ D("GuitarLink Wireless","无线系统","吉他无线传输系统"),
+]},
+{cat:"inst",name:"HeadRush",site:true,tag:"吉他放大器建模与效果(2017 自创)",p:[
+ D("Prime","综合效果器","旗舰地板综合效果器,7 寸触屏、放大器/踏板克隆、含 Auto‑Tune"),
+ D("Flex Prime","综合效果器","紧凑款,搭载 Prime 内核,600+ 效果/放大器/IR"),
+ D("Core","综合效果器","Prime 级音质的轻量款,5 踏板、无内置踏板"),
+ D("VX5","人声效果器","内置 Antares Auto‑Tune 的人声处理踏板,含和声"),
+ D("Pedalboard","综合效果器","大型触屏地板综合效果器(旗舰传统款)"),
+ D("Gigboard","综合效果器","便携触屏地板综合效果器"),
+ D("Looperboard","循环工作站","四轨专业循环(Looper)工作站,7 寸触屏"),
+ D("FRFR‑108 MKII","有源音箱","8 寸 FRFR 全频有源建模监听音箱"),
+ D("FRFR‑112 MKII","有源音箱","12 寸 FRFR 全频有源建模监听音箱"),
+ D("MX5","综合效果器","掌上型紧凑放大器建模效果器",true),
+ D("FRFR-GO","有源音箱","30 瓦便携充电式双 3 寸全频 FRFR 音箱,带蓝牙"),
+]},
+
+/* ---------------- 专业与消费音频 ---------------- */
+{cat:"audio",name:"M-Audio",site:true,tag:"音频接口、MIDI 键盘与监听",p:[
+ D("M‑Track Solo","音频接口","2 进 2 出 USB 声卡,单话放/线路输入,入门录音"),
+ D("M‑Track Duo","音频接口","USB 声卡,双组合输入接口,可选幻象供电"),
+ D("M‑Track Duo HD","音频接口","Duo 升级版,24‑bit 高清双通道声卡"),
+ D("AIR Hub","USB 监听声卡","24/96 USB 监听声卡,内建三口 USB 集线器"),
+ D("AIR 192|4","音频接口","2 进 2 出声卡,一路话筒一路乐器输入"),
+ D("AIR 192|6","音频接口","2 进 2 出声卡,带 MIDI I/O 与环回"),
+ D("AIR 192|8","音频接口","双话放多输入 USB 声卡"),
+ D("AIR 192|14","音频接口","8 进 4 出大型 USB 声卡,可机架安装"),
+ D("Keystation Mini 32 MK3","MIDI 键盘","32 迷你键超便携 MIDI 控制键盘"),
+ D("Keystation 49 MK3","MIDI 键盘","49 全尺寸键 MIDI 主控键盘"),
+ D("Keystation 61 MK3","MIDI 键盘","61 全尺寸键 MIDI 主控键盘"),
+ D("Keystation 88 MK3","MIDI 键盘","88 半配重键 MIDI 主控键盘"),
+ D("Oxygen 25 (MKV)","MIDI 键盘","25 键智能控制键盘,带打击垫、旋钮、推子"),
+ D("Oxygen 49 (MKV)","MIDI 键盘","49 键智能控制键盘"),
+ D("Oxygen 61 (MKV)","MIDI 键盘","61 键智能控制键盘"),
+ D("Oxygen Pro Mini","MIDI 键盘","32 迷你键专业控制器,全套打击垫/旋钮/推子"),
+ D("Oxygen Pro 25","MIDI 键盘","25 键专业控制器,带触后与 Smart 功能"),
+ D("Oxygen Pro 49","MIDI 键盘","49 键专业控制器"),
+ D("Oxygen Pro 61","MIDI 键盘","61 键专业控制器"),
+ D("Hammer 88","MIDI 键盘","88 全配重锤感键 MIDI 主控键盘"),
+ D("Hammer 88 Pro","MIDI 键盘","88 配重键旗舰控制器,带打击垫、旋钮、推子"),
+ D("BX3","桌面监听音箱","3 寸有源桌面监听音箱"),
+ D("BX4","桌面监听音箱","4.5 寸有源桌面监听音箱"),
+ D("BX5 D3","有源监听音箱","5 寸专业有源录音室监听音箱"),
+ D("BX8 D3","有源监听音箱","8 寸专业有源录音室监听音箱"),
+ D("Nova Black","电容麦克风","大振膜心形指向电容麦克风,含防震架"),
+ D("M-Track Eight","音频接口","8 进 USB 音频接口,配 Octane 话放技术"),
+ D("Uno","MIDI 接口","1 进 1 出 USB 总线供电 MIDI 接口"),
+ D("M-Track Duo HD Producer Pack","录音套装","以 M-Track Duo HD 为核心的完整录音制作套装"),
+ D("AIR 192|4 Vocal Studio Pro","录音套装","含 AIR 192|4 接口、话筒、耳机的人声录制套装"),
+ D("BX5BT","有源监听音箱","5 英寸带蓝牙的有源监听音箱"),
+ D("BX3 BT","桌面监听音箱","3.5 英寸带蓝牙的桌面监听音箱"),
+ D("BX4 BT","桌面监听音箱","4.5 英寸带蓝牙的桌面监听音箱"),
+ D("Forty Sixty","有源监听音箱","6.5 英寸有源监听音箱,带 DSP 与蓝牙 5.0"),
+ D("Forty Eighty","有源监听音箱","8 英寸双功放有源监听音箱,带 DSP 与蓝牙 5.0"),
+ D("AV32","桌面音箱","多媒体桌面参考音箱"),
+ D("Uber Mic","麦克风","带耳机输出的专业 USB 电容话筒"),
+]},
+{cat:"audio",name:"Alto Professional",site:true,tag:"现场扩声 PA 与调音台",p:[
+ D("TS408","有源 PA 音箱","8 寸 2 分频有源音箱,2000W 峰值,蓝牙/DSP/3 路调音"),
+ D("TS410","有源 PA 音箱","10 寸有源音箱,2000W 峰值,蓝牙串流与 App 调节"),
+ D("TS412","有源 PA 音箱","12 寸有源音箱,2500W 峰值,带蓝牙、DSP 与 3 路调音台"),
+ D("TS415","有源 PA 音箱","15 寸大口径有源音箱,2500W,蓝牙加 App 控制"),
+ D("TX4 系列 (TX408–415)","有源 PA 音箱","8/10/12/15 寸有源全频音箱,带蓝牙与双通道混音,含电池版 TX412B"),
+ D("TX3 系列 (TX308–315)","有源 PA 音箱","8/10/12/15 寸两分频有源 PA 音箱"),
+ D("TX12S / TX18S","有源低音炮","900W DSP 有源低音炮(12 与 18 寸)"),
+ D("TS108C","立柱阵列 PA","便携 600W 立柱阵列 PA,带 DSP 与蓝牙"),
+ D("TS112C","立柱阵列 PA","1200W 便携立柱阵列,带 DSP 与蓝牙"),
+ D("TS12S","有源低音炮","紧凑 12 寸有源低音炮,2500W"),
+ D("TS15S","有源低音炮","15 寸有源低音炮,2500W,扎实低频"),
+ D("TS18S","有源低音炮","18 寸大口径有源低音炮,2500W,最深沉低频"),
+ D("Busker","便携电池 PA","充电式一体化街头卖唱 PA,带 3 路调音、效果与蓝牙"),
+ D("Uber FX2","便携电池 PA","带轮 5 单元电池 PA,320° 环绕声、效果器,续航约 100 小时"),
+ D("Stealth 1","无线 XLR 系统","微型 UHF 无线收发对,让任意 XLR 连接变无线"),
+ D("Bluetooth Ultimate","蓝牙接收器","充电式立体声蓝牙接收器,双 XLR 输出"),
+ D("Bluetooth Total","蓝牙接收器","单声道 XLR 蓝牙接收适配器,由 Ultimate 取代",true),
+ D("TrueMix 500","调音台 / USB 声卡","5 路紧凑模拟调音台带 USB,录音/直播/小型演出"),
+ D("TrueMix 600","调音台 / USB 声卡","6 路模拟调音台,增加蓝牙与 USB"),
+ D("TrueMix 800 FX","调音台 / USB 声卡","8 路调音台,内置 16 种效果、蓝牙与 USB"),
+ D("TMD16","数字调音台","16 通道紧凑数字调音台,电容触控推子、7 寸彩屏与蓝牙(2025 新品)"),
+ D("Live 系列调音台","模拟调音台","Live 系列紧凑模拟调音台,8–24 通道(802/1202/1604/2404)"),
+ D("Uber LT","便携电池 PA","50W 便携电池供电 6.5 寸 PA 音箱,附手持话筒"),
+ D("Uber PA","便携电池 PA","50W 便携电池供电 6.5 寸两分频 PA 音箱,续航约 50 小时"),
+ D("Stealth Wireless MKII","无线系统","面向有源音箱的双通道 UHF 无线音频系统,可加扩展接收包"),
+ D("Stealth Pro","无线系统","专业双通道分集式 UHF 无线音频系统,可加扩展接收包"),
+]},
+{cat:"audio",name:"ION Audio",site:true,tag:"便携 / 派对音箱与 USB 唱机",note:"SKU 更迭频繁,列出的是持续在售产品线。",p:[
+ D("Block Rocker","便携电池蓝牙 PA","旗舰拉杆带轮派对音箱,120W、蓝牙 5.3、约 35 小时续航含话筒"),
+ D("Block Rocker Plus","便携电池蓝牙 PA","升级款,100W 带 AM/FM,35 小时超长续航"),
+ D("Pathfinder","三防户外蓝牙音箱","IPX5 防水户外音箱,多单元宽广声场加约 100 小时续航"),
+ D("Tailgater","便携蓝牙 PA","小巧即拿即走蓝牙 PA,8 寸单元加 AM/FM"),
+ D("Tailgater XL","便携蓝牙 PA","更大更强,5 单元全向声场、FX 触控垫与 App 控制"),
+ D("Party Boom","蓝牙灯光派对音箱","变色发光低音单元加 FX 音效垫,100W 蓝牙音箱"),
+ D("Party Boom Plus","蓝牙灯光派对音箱","升级款,120W 四单元宽广声场,10 种炫彩灯效"),
+ D("Total PA(Pro/Ultra 等)","大型一体化 PA","高功率(400W‑1000W)一体 PA,带调音台、无线麦与灯光"),
+ D("Total PA Quake","大型便携蓝牙 PA","15 寸震撼低音 PA,含调音台、无线麦与音箱支架"),
+ D("Max LP","USB 转录唱机","三速 USB 黑胶唱机,内置音箱,可数字化到电脑"),
+ D("Archive LP","USB 转录唱机","木纹唱机内置音箱,一键 USB 转录黑胶"),
+ D("Air LP","蓝牙 / USB 唱机","皮带传动唱机,可蓝牙串流至无线音箱,也可 USB 转录"),
+ D("Trailblazer 系列","三防蓝牙音箱","全天候坚固便携蓝牙音箱系列(Trailblazer / Summit / Roar)"),
+ D("Explorer 系列","户外蓝牙音箱","大功率户外蓝牙音箱系列,XL 为 5 单元 220W,FX 带音效触发/录制"),
+ D("Glow Tone","蓝牙音箱","带多彩律动灯光与 FM 的立体声蓝牙音箱,可作便携 PA"),
+ D("Wave Rider X","户外防水蓝牙音箱","可漂浮的防水防沙蓝牙音箱,配 11 种灯效"),
+ D("Classic LP","黑胶唱机","皮带传动 USB 转换黑胶唱机,可播 33/45/78 转"),
+ D("Luxe LP","黑胶唱机","内置立体声扬声器的一体式 USB 转换黑胶唱机"),
+ D("Premier LP","黑胶唱机","带蓝牙输出与内置音箱的黑胶唱机"),
+]},
+{cat:"audio",name:"Denon Professional",site:false,tag:"商用 / 工程安装 / 广播 AV",note:"inMusic 自有;与消费级 Denon Hi‑Fi(属 Masimo/Sound United)是两家公司。",p:[
+ D("DN‑300Z","媒体播放器","带蓝牙/USB/SD/AUX 及 AM/FM 的 1U 机架式 CD/媒体播放器"),
+ D("DN‑300C","媒体播放器","带 USB 与 AUX 输入的机架式 CD/媒体播放器"),
+ D("DN‑350UI","媒体播放器","支持蓝牙的网络电台与媒体播放器"),
+ D("DN‑F65S","媒体播放器","固态(SD/USB)机架式媒体播放器,适合广播快启"),
+ D("DN‑500BD MKII","视频播放器","1U 专业蓝光/DVD/CD 播放机,支持 SD/USB 多媒体"),
+ D("DN‑300CR","录音机","机架式 CD 录音/播放机,支持 CD‑R/RW 与平衡 I/O"),
+ D("DN‑900R","网络 / Dante 录音机","旗舰 1U 网络 SD/USB 录音机,内置 Dante,24bit/96kHz"),
+ D("DN‑508MX","混音器","8 分区混音器,支持 RS‑232C 与 IP 控制"),
+ D("DN‑312X","混音器","12 通道线路混音器,带优先(priority)功能"),
+ D("DN‑508MXA","混音功放","8 分区混音 + 4 分区功放,支持远程控制"),
+ D("DN‑306XA","混音功放","6 通道混音 + 内置 120W D 类功放,1U 一体机"),
+ D("DN‑333XAB","混音功放","带蓝牙的机架式麦克/线路混音功放,面向教育/餐饮"),
+ D("DN‑A300M","混音功放","紧凑集成功放,2×100W,带前面板话筒与音乐闪避"),
+ D("DN‑280","功率放大器","带话筒输入的分区功放"),
+ D("DN‑470A","功率放大器","4 通道 70V/100V 定压功放"),
+ D("DN‑200BR","蓝牙接收器","将蓝牙音源接入专业系统,输出平衡 XLR/6.35mm"),
+ D("DN‑200AZB","蓝牙接收 / 功放","紧凑蓝牙接收器,内置 20W RMS、70/100V D 类功放"),
+ D("DN‑106S","安装扬声器","6.5 英寸商用级吸顶扬声器"),
+ D("DN‑205W","安装扬声器","二分频入墙式扬声器"),
+ D("DN-300C MKII","媒体播放器","带速度控制的 1U 专业 CD/媒体播放器"),
+ D("DN-350MP","媒体播放器 / 功放","带手机托架、内置 60W 单声道功放的多媒体播放器"),
+ D("DN-300DH","数字调谐器","面向商用安装的 AM/FM/DAB+ 数字调谐器"),
+ D("DN-F350","固态媒体播放器","支持蓝牙/USB/SD/Aux 的固态媒体播放器"),
+ D("DN-300R MKII","录音机","可同时录制到 SD 与 USB 的固态音频录音机"),
+ D("DN-300BR","蓝牙接收器","1U 机架式蓝牙音频接收器,带专业级音频输出"),
+ D("DN-202WR","无线接收器","Solution 系列无线音频接收器(搭配 DN-202WT)"),
+ D("DN-202WT","无线发射器","Solution 系列无线音频发射器"),
+ D("Audio Commander","便携式 PA","全能一体化便携 PA,含两支 UHF 无线话筒,内置电池"),
+ D("Commander Sport","便携式 PA","IPX4 防水一体化便携 PA,120W、8 寸低音,含手持 UHF 话筒"),
+]},
+{cat:"audio",name:"Marantz Professional",site:false,tag:"播客 / 录音 / 广播 ENG",note:"inMusic 自有;与消费级 Marantz Hi‑Fi(属 Masimo/Sound United)不同公司。",p:[
+ D("MPM‑1000","录音室话筒(XLR)","入门级大振膜电容话筒,面向播客与录音"),
+ D("MPM‑2000","录音室话筒(XLR)","34mm 镀金大振膜心形电容话筒,低噪声宽动态"),
+ D("MPM‑1000U","USB / 播客话筒","一体式 USB 电容话筒,内置声卡,适合播客/直播"),
+ D("MPM‑2000U","USB / 播客话筒","MPM‑2000 的 USB 版大振膜话筒,可直录进 DAW"),
+ D("MPM‑4000U","USB / 播客话筒","内置调音台与耳机输出的 USB 播客话筒"),
+ D("Umpire","USB / 播客话筒","桌面 USB 电容话筒,适合播客/直播/会议"),
+ D("Pod Pack 1","播客套装","USB 话筒套装,含广播悬臂支架与线缆"),
+ D("Turret","广播 / 直播系统","一体化直播工作站,集摄像头、话筒、补光灯与耳放"),
+ D("AVS","广播 / 直播系统","一体化音视频流媒体设备,面向直播/视频通话"),
+ D("PMD561","便携录音机","紧凑手持固态录音机,24bit/96kHz,双组合输入带幻象"),
+ D("PMD‑706","便携录音机","6 通道现场/单反录音机,4 路 XLR + 2 路 TRS"),
+ D("PMD661 MKIII","便携录音机","带文件加密的手持固态录音机,面向广播/执法"),
+ D("PMD‑526C","机架媒体播放器","高性价比机架播放器,支持 CD/蓝牙/USB/SD/AUX"),
+ D("Sound Shield / Compact","录音室配件","人声反射隔声屏(标准/可折叠紧凑版)"),
+ D("PMD-100CD","媒体播放器","专业 CD/USB 媒体播放器"),
+ D("PMD-300CP","卡带录音机","双卡带录/放机,支持倍速转录并可经 USB 数字化磁带"),
+ D("PMD-750","无线话筒系统","面向 DSLR 摄像师的机顶无线话筒系统"),
+]},
+
+/* ---------------- 舞台灯光 ---------------- */
+{cat:"light",name:"MARQ Lighting",site:false,tag:"舞台 / DJ 灯光与烟雾设备",note:"inMusic 自有灯光品牌;官网 marqlighting.com 目前已停用,故本节型号暂无官方产品链接。",p:[
+ D("Gesture Spot 300/400/500","图案摇头灯","LED 图案光束摇头灯(60/75/120W),带图案片/棱镜/频闪"),
+ D("Gesture Beam 400/500","光束摇头灯","紧束光束摇头灯,含探照灯天空扫描模式"),
+ D("Gesture Wash 102","洗光摇头灯","双面独立 RGBW 摇头洗墙灯"),
+ D("Colormax Par 系列","帕灯 / 洗光","低矮型 RGB LED 帕灯"),
+ D("Gamut PAR H7","帕灯 / 洗光","7×10W RGBAW/UV 六合一 LED 洗光帕灯"),
+ D("Ray Tracer X / Quad","效果灯","双滚筒多光束旋转效果灯(白光/八彩/旗舰旋转版)"),
+ D("Haze 700 / 800 DMX","薄雾机","700W/800W 薄雾机,可连续运行约 4 小时"),
+ D("Fog 400 LED","烟雾机","400W 水基快速喷雾烟机,带 LED 与有线遥控"),
+ D("RezoTube (Pack)","LED 灯管显示","LED 像素灯管显示套装"),
+ D("Gobo Projector","图案投影灯","logo/纹理图案投影灯"),
+ D("PA Light Rig","灯光支架系统","装配于音箱支架点位的可调灯光支架"),
+]},
+];
+
+// ---- official product-page URLs (verified on each brand's site) ----
+const URLS={
+// Native Instruments
+"Komplete Start":"https://www.native-instruments.com/en/products/komplete/bundles/komplete-start/",
+"Komplete Select":"https://www.native-instruments.com/en/products/komplete/bundles/komplete-select/",
+"Komplete 26 Standard":"https://www.native-instruments.com/en/products/komplete/bundles/komplete-26-standard/",
+"Komplete 26 Ultimate":"https://www.native-instruments.com/en/products/komplete/bundles/komplete-26-ultimate/",
+"Komplete 26 Collector's Edition":"https://www.native-instruments.com/en/products/komplete/bundles/komplete-26-collectors-edition/",
+"Komplete Now":"https://www.native-instruments.com/en/specials/komplete/komplete-now/",
+"Kontakt 8":"https://www.native-instruments.com/en/products/komplete/samplers/kontakt-8/",
+"Kontakt 8 Player":"https://www.native-instruments.com/en/products/komplete/samplers/kontakt-8-player/",
+"Massive X":"https://www.native-instruments.com/en/products/komplete/synths/massive-x/",
+"Massive":"https://www.native-instruments.com/en/products/komplete/synths/massive/",
+"FM8":"https://www.native-instruments.com/en/products/komplete/synths/fm8/",
+"Reaktor 6":"https://www.native-instruments.com/en/products/komplete/synths/reaktor-6/",
+"Reaktor 6 Player":"https://www.native-instruments.com/en/products/komplete/synths/reaktor-6-player/",
+"Battery 4":"https://www.native-instruments.com/en/products/komplete/drums/battery-4/",
+"Guitar Rig 7 Pro":"https://www.native-instruments.com/en/products/komplete/guitar/guitar-rig-7-pro/",
+"Monark":"https://www.native-instruments.com/en/products/komplete/synths/monark/",
+"Razor":"https://www.native-instruments.com/en/products/komplete/synths/razor/",
+"Form":"https://www.native-instruments.com/en/products/komplete/synths/form/",
+"Rounds":"https://www.native-instruments.com/en/products/komplete/synths/rounds/",
+"Super 8":"https://www.native-instruments.com/en/products/komplete/synths/super-8/",
+"Kontour":"https://www.native-instruments.com/en/products/komplete/synths/kontour/",
+"Prism":"https://www.native-instruments.com/en/products/komplete/synths/reaktor-prism/",
+"Play Series – Analog Dreams":"https://www.native-instruments.com/en/products/komplete/play-series/analog-dreams/",
+"Play Series – Ethereal Earth":"https://www.native-instruments.com/en/products/komplete/play-series/ethereal-earth/",
+"Play Series – Hybrid Keys":"https://www.native-instruments.com/en/products/komplete/play-series/hybrid-keys/",
+"Play Series – Electric Keys":"https://www.native-instruments.com/en/catalog/software/keys/electric-keys/",
+"Session Guitarist – Strummed Acoustic 2":"https://www.native-instruments.com/en/products/komplete/guitar/session-guitarist-strummed-acoustic-2/",
+"Session Guitarist – Picked Acoustic":"https://www.native-instruments.com/en/products/komplete/guitar/session-guitarist-picked-acoustic/",
+"Session Guitarist – Electric Sunburst / Deluxe":"https://www.native-instruments.com/en/products/komplete/guitar/session-guitarist-electric-sunburst-deluxe/",
+"Session Guitarist – Acoustic Sunburst Deluxe":"https://www.native-instruments.com/en/products/komplete/guitar/session-guitarist-acoustic-sunburst-deluxe/",
+"Session Guitarist – Electric Vintage":"https://www.native-instruments.com/en/products/komplete/guitar/session-guitarist-electric-vintage/",
+"Session Strings 2":"https://www.native-instruments.com/en/products/komplete/cinematic/session-strings-2/",
+"Session Strings Pro 2":"https://www.native-instruments.com/en/products/komplete/cinematic/session-strings-pro-2/",
+"Session Horns":"https://www.native-instruments.com/en/products/komplete/cinematic/session-horns/",
+"Session Horns Pro":"https://www.native-instruments.com/en/products/komplete/cinematic/session-horns-pro/",
+"Session Bassist – Prime Bass":"https://www.native-instruments.com/en/products/komplete/guitar/session-bassist-prime-bass/",
+"Session Bassist – Upright Bass":"https://www.native-instruments.com/en/products/komplete/guitar/session-bassist-upright-bass/",
+"Raum":"https://www.native-instruments.com/en/products/komplete/effects/raum/",
+"Replika XT":"https://www.native-instruments.com/en/products/komplete/effects/replika-xt/",
+"Traktor Pro 4":"https://www.native-instruments.com/en/products/traktor/dj-software/traktor-pro-4/",
+"Traktor Kontrol S4 MK3":"https://www.native-instruments.com/en/products/traktor/dj-controllers/traktor-kontrol-s4/",
+"Traktor Kontrol S2 MK3":"https://www.native-instruments.com/en/products/traktor/dj-controllers/traktor-kontrol-s2/",
+"Traktor Kontrol S3":"https://www.native-instruments.com/en/products/traktor/dj-controllers/traktor-kontrol-s3/",
+"Traktor Kontrol X1 MK3":"https://www.native-instruments.com/en/products/traktor/dj-controllers/traktor-x1/",
+"Traktor Kontrol Z1 MK2":"https://www.native-instruments.com/en/products/traktor/dj-controllers/traktor-z1/",
+"Traktor MX2":"https://www.native-instruments.com/en/products/traktor/dj-controllers/traktor-mx2/",
+"Komplete Kontrol S49 MK3":"https://www.native-instruments.com/en/products/komplete/keyboards/kontrol-s49-s61-s88/",
+"Komplete Kontrol S61 MK3":"https://www.native-instruments.com/en/products/komplete/keyboards/kontrol-s49-s61-s88/",
+"Komplete Kontrol S88 MK3":"https://www.native-instruments.com/en/products/komplete/keyboards/kontrol-s49-s61-s88/",
+"Komplete Kontrol A25":"https://www.native-instruments.com/en/products/komplete/keyboards/komplete-kontrol-a25-a49-a61/",
+"Komplete Kontrol A49":"https://www.native-instruments.com/en/products/komplete/keyboards/komplete-kontrol-a25-a49-a61/",
+"Komplete Kontrol A61":"https://www.native-instruments.com/en/products/komplete/keyboards/komplete-kontrol-a25-a49-a61/",
+"Komplete Kontrol M32":"https://www.native-instruments.com/en/products/komplete/keyboards/komplete-kontrol-m32/",
+"Maschine (MK3)":"https://www.native-instruments.com/en/products/maschine/production-systems/maschine/",
+"Maschine+":"https://www.native-instruments.com/en/products/maschine/production-systems/maschine-plus/",
+"Maschine Mikro (MK3)":"https://www.native-instruments.com/en/products/maschine/production-systems/maschine-mikro/",
+"Komplete Audio 1":"https://www.native-instruments.com/en/products/komplete/audio-interfaces/komplete-audio-1-audio-2/",
+"Komplete Audio 2":"https://www.native-instruments.com/en/products/komplete/audio-interfaces/komplete-audio-1-audio-2/",
+"Komplete Audio 6 MK2":"https://www.native-instruments.com/en/press-area/music-production/komplete-audio-6/",
+// Akai Professional
+"MPC X":"https://www.akaipro.com/products/collections/mpc/",
+"MPC X SE":"https://www.akaipro.com/mpc-x-se/",
+"MPC Live II":"https://www.akaipro.com/mpc-live-2/",
+"MPC One":"https://www.akaipro.com/products/collections/mpc/",
+"MPC One+":"https://www.akaipro.com/mpc-one-plus/",
+"MPC Key 61":"https://www.akaipro.com/mpc-key-61/",
+"MPC Key 37":"https://www.akaipro.com/mpc-key-37/",
+"MPC Studio":"https://www.akaipro.com/products/collections/mpc/",
+"Force":"https://www.akaipro.com/force/",
+"MPK Mini MK3":"https://www.akaipro.com/mpk-mini-mk3/",
+"MPK Mini Play MK3":"https://www.akaipro.com/mpk-mini-play-mk3/",
+"MPK Mini Plus":"https://www.akaipro.com/mpk-mini-plus/",
+"MPK225":"https://www.akaipro.com/mpk225/",
+"MPK249":"https://www.akaipro.com/mpk249/",
+"MPK261":"https://www.akaipro.com/mpk261/",
+"MPK88":"https://www.akaipro.com/products/collections/mpk/",
+"MPD218":"https://www.akaipro.com/mpd218/",
+"MPD226":"https://www.akaipro.com/products/controllers.html",
+"MPD232":"https://www.akaipro.com/products/controllers.html",
+"APC40 MkII":"https://www.akaipro.com/apc40-mk2/",
+"APC64":"https://www.akaipro.com/apc64/",
+"APC Key 25 MK2":"https://www.akaipro.com/apc-key-25-mk2/",
+"APC Mini MK2":"https://www.akaipro.com/apc-mini-mk2/",
+"LPD8":"https://www.akaipro.com/lpd8-mk2/",
+"LPK25":"https://www.akaipro.com/lpk-25-mk2/",
+"MPC 2":"https://www.akaipro.com/mpc-software-2/",
+"MPC Beats":"https://www.akaipro.com/mpc-beats/",
+// Moog
+"Moog One":"https://www.moogmusic.com/synthesizers/moog-one",
+"Muse":"https://www.moogmusic.com/synthesizers/muse",
+"Minimoog Model D":"https://www.moogmusic.com/synthesizers/minimoog-model-d",
+"Subsequent 37":"https://www.moogmusic.com/synthesizers/subsequent-37",
+"Subsequent 25":"https://www.moogmusic.com/synthesizers/",
+"Messenger":"https://www.moogmusic.com/synthesizers/messenger",
+"Grandmother":"https://www.moogmusic.com/synthesizers/grandmother",
+"Matriarch":"https://www.moogmusic.com/synthesizers/matriarch",
+"Mother‑32":"https://www.moogmusic.com/synthesizers/mother-32",
+"DFAM":"https://www.moogmusic.com/synthesizers/dfam",
+"Subharmonicon":"https://www.moogmusic.com/synthesizers/subharmonicon",
+"Spectravox":"https://www.moogmusic.com/synthesizers/spectravox",
+"Mavis":"https://www.moogmusic.com/synthesizers/mavis",
+"Labyrinth":"https://www.moogmusic.com/synthesizers/labyrinth",
+"Etherwave Theremin (+)":"https://www.moogmusic.com/synthesizers/etherwave-theremin",
+"Claravox Centennial":"https://www.moogmusic.com/synthesizers/",
+"Moogerfooger(硬件 100 系列)":"https://software.moogmusic.com/store",
+"Moogerfooger 插件合集":"https://software.moogmusic.com/store/mf-bundle",
+"Minifooger 系列":"https://www.moogmusic.com/synthesizers/",
+"Minitaur":"https://www.moogmusic.com/synthesizers/minitaur",
+"Model 15 (App)":"https://apps.apple.com/us/app/model-15-modular-synthesizer/id1041465860",
+"Animoog Z (App)":"https://apps.apple.com/us/app/animoog-z-synthesizer/id1586841361",
+"Model D (App)":"https://apps.apple.com/us/app/minimoog-model-d-synthesizer/id1339418001",
+"Filtatron (App)":"https://software.moogmusic.com",
+// Denon DJ
+"Prime 4+":"https://www.denondj.com/prime-4-plus.html",
+"Prime Go+":"https://www.denondj.com/prime-go-plus.html",
+"SC Live 4":"https://www.denondj.com/sclive4",
+"SC Live 2":"https://www.denondj.com/sclive2",
+"SC6000 Prime":"https://www.denondj.com/sc6000-prime.html",
+"SC6000M Prime":"https://www.denondj.com/sc6000m-prime.html",
+"X1850 Prime":"https://www.denondj.com/x1850%20prime-x1850primexus",
+"LC6000 Prime":"https://www.denondj.com/lc6000prime.html",
+// Rane
+"Seventy‑Two MKII":"https://www.rane.com/seventy-two-mk2/",
+"Seventy":"https://www.rane.com/seventy/",
+"RANE ONE MKII":"https://www.rane.com/one-mk2/",
+"RANE FOUR":"https://www.rane.com/four/",
+"Performer":"https://www.rane.com/performer/",
+"Twelve MKII":"https://www.rane.com/twelve-mk2/",
+"System One":"https://www.rane.com/system-one/",
+// Numark
+"Mixtrack Pro FX":"https://www.numark.com/product/mixtrack-pro-fx",
+"Mixtrack Platinum FX":"https://www.numark.com/product/mixtrack-platinum-fx",
+"Mixtrack Go":"https://www.numark.com/new/mixtrack-go/",
+"Party Mix III":"https://www.numark.com/new/party-mix-3/",
+"Party Mix II":"https://www.numark.com/product/party-mix-ii",
+"DJ2GO2 Touch":"https://www.numark.com/product/dj2go2-touch",
+"NS7 II":"https://www.numark.com/product/ns7ii",
+"NTX1000":"https://www.numark.com/product/ntx1000",
+"PT01 Scratch":"https://www.numark.com/product/pt01-scratch",
+"Numark Scratch":"https://www.numark.com/product/scratch",
+"RPM‑100":"https://www.numark.com/product_category/mixers",
+"M6 USB":"https://www.numark.com/product/m6usb",
+// Engine DJ
+"Engine DJ OS":"https://enginedj.com/software/enginedj-os",
+"Engine DJ Desktop":"https://enginedj.com/software/enginedj-desktop",
+"Engine DJ 5.0":"https://enginedj.com/news/articles/introducing-engine-dj-5-0",
+// SoundSwitch
+"SoundSwitch Desktop":"https://www.soundswitch.com/software",
+"Control One":"https://www.soundswitch.com/controlone",
+"Micro DMX Interface":"https://www.soundswitch.com/microdmx",
+// Stanton
+"STX Turntable":"https://www.stantondj.com/stx/",
+"DS4 Cartridge":"https://www.stantondj.com/ds4/",
+"DS4 Replacement Stylus":"https://www.stantondj.com/ds4/",
+"ST.150 / STR8‑150":"https://www.stantondj.com/",
+"500 系列":"https://www.stantondj.com/",
+"680 / 680.V3":"https://www.stantondj.com/",
+"Groovemaster":"https://www.stantondj.com/",
+"ScratchAmp":"https://www.stantondj.com/",
+// MixMeister
+"Fusion 7.7":"http://www.mixmeister.com/",
+"Fusion + Video":"http://www.mixmeister.com/",
+"Express":"http://www.mixmeister.com/",
+"Studio":"http://www.mixmeister.com/",
+"BPM Analyzer":"http://www.mixmeister.com/",
+// Alesis
+"Strata Prime":"https://www.alesisdrums.com/electronic-drum-kits/strata-prime/",
+"Strata Core":"https://www.alesisdrums.com/electronic-drum-kits/strata-core/",
+"Strata Club":"https://www.alesisdrums.com/electronic-drum-kits/strata-club/",
+"Nitro Ultimate":"https://www.alesisdrums.com/electronic-drum-kits/nitro-ultimate/",
+"Nitro Pro":"https://www.alesisdrums.com/electronic-drum-kits/nitro-pro/",
+"Nitro Max":"https://www.alesisdrums.com/electronic-drum-kits/nitro-max-kit/",
+"Nitro Mesh":"https://www.alesisdrums.com/electronic-drum-kits/nitro-mesh-kit/",
+"Crimson III":"https://www.alesisdrums.com/electronic-drum-kits/crimson-III/",
+"Turbo Max":"https://www.alesisdrums.com/electronic-drum-kits/turbo-max/",
+"Debut":"https://www.alesisdrums.com/electronic-drum-kits/debut-kit/",
+"Strike MultiPad":"https://www.strikemultipad.com/",
+"SamplePad":"https://www.alesis.com/products/view/samplepad.html",
+"SamplePad 4":"https://www.alesisdrums.com/multipads-and-drum-machines/samplepad-4/",
+"SamplePad Pro":"https://www.alesisdrums.com/multipads-and-drum-machines/samplepad-pro/",
+"Strike Amp 12 MK2":"https://www.alesisdrums.com/drum-amplification/strike-amp-12-mk2/",
+"Strike Amp 8":"https://www.alesis.com/products/view2/strike-amp-8",
+"Recital":"https://www.alesis.com/products/view/recital.html",
+"Recital Home":"https://www.alesis.com/products/view/recital-home-turquoise.html",
+"Recital Play":"https://www.alesis.com/products/view/recital-play.html",
+"Recital Pro":"https://www.alesis.com/products/view/recital-pro.html",
+"Prestige":"https://www.alesis.com/products/view2/prestige.html",
+"Concert":"https://www.alesis.com/products/view2/concert.html",
+"Elevate 3":"https://www.alesis.com/products/view/elevate-3",
+"Elevate 4":"https://www.alesis.com/products/view/elevate-4.html",
+"Elevate 5":"https://www.alesis.com/products/view/elevate-5.html",
+"Monitor One MkII":"https://www.alesis.com/products/view/monitor-one-mkii-passive.html",
+// M-Audio
+"M‑Track Solo":"https://www.m-audio.com/audio-midi-interfaces/m-track-solo.html",
+"M‑Track Duo":"https://www.m-audio.com/audio-midi-interfaces/m-track-duo.html",
+"M‑Track Duo HD":"https://www.m-audio.com/audio-midi-interfaces/m-track-duo-hd.html",
+"AIR Hub":"https://www.m-audio.com/audio-midi-interfaces/air-hub.html",
+"AIR 192|4":"https://www.m-audio.com/audio-midi-interfaces/air-192-4.html",
+"AIR 192|6":"https://www.m-audio.com/audio-midi-interfaces/air-192-6.html",
+"AIR 192|8":"https://www.m-audio.com/audio-midi-interfaces/air-192-8.html",
+"AIR 192|14":"https://www.m-audio.com/audio-midi-interfaces/air-192-14.html",
+"Keystation Mini 32 MK3":"https://www.m-audio.com/keyboard-controllers/keystation-mini32-mk3.html",
+"Keystation 49 MK3":"https://www.m-audio.com/keyboard-controllers/keystation-49-mk3.html",
+"Keystation 61 MK3":"https://www.m-audio.com/keyboard-controllers/keystation-61-mk3.html",
+"Keystation 88 MK3":"https://www.m-audio.com/keyboard-controllers/keystation-88-mk3.html",
+"Oxygen 25 (MKV)":"https://www.m-audio.com/keyboard-controllers/oxygen-v-25",
+"Oxygen 49 (MKV)":"https://www.m-audio.com/keyboard-controllers/oxygen-v-49",
+"Oxygen 61 (MKV)":"https://www.m-audio.com/keyboard-controllers/oxygen-v-61.html",
+"Oxygen Pro Mini":"https://www.m-audio.com/keyboard-controllers/oxygen-pro-mini.html",
+"Oxygen Pro 25":"https://www.m-audio.com/keyboard-controllers/oxygen-pro-25.html",
+"Oxygen Pro 49":"https://www.m-audio.com/keyboard-controllers/oxygen-pro-49.html",
+"Oxygen Pro 61":"https://www.m-audio.com/keyboard-controllers/oxygen-pro-61.html",
+"Hammer 88":"https://www.m-audio.com/keyboard-controllers/hammer88.html",
+"Hammer 88 Pro":"https://www.m-audio.com/keyboard-controllers/hammer-88-pro.html",
+"BX3":"https://www.m-audio.com/monitors-headphones/bx3.html",
+"BX4":"https://www.m-audio.com/monitors-headphones/bx4.html",
+"BX5 D3":"https://www.m-audio.com/monitors-headphones/bx5d3.html",
+"BX8 D3":"https://www.m-audio.com/monitors-headphones/bx8d3.html",
+"Nova Black":"https://www.m-audio.com/category/microphones.html",
+// HeadRush
+"Prime":"https://www.headrushfx.com/products/prime/index.html",
+"Flex Prime":"https://www.headrushfx.com/products/flex-prime/index.html",
+"Core":"https://www.headrushfx.com/products/core/index.html",
+"VX5":"https://www.headrushfx.com/products/vx5-autotune/index.html",
+"Pedalboard":"https://www.headrushfx.com/products/pedalboard/index.html",
+"Gigboard":"https://www.headrushfx.com/products/gigboard/index.html",
+"Looperboard":"https://www.headrushfx.com/products/looperboard/",
+"FRFR‑108 MKII":"https://www.headrushfx.com/products/frfr108mk2/index.html",
+"FRFR‑112 MKII":"https://www.headrushfx.com/products/frfr112mk2/index.html",
+"MX5":"https://www.headrushfx.com/products/mx5/index.html",
+// Alto Professional
+"TS408":"https://www.altoprofessional.com/products/ts408",
+"TS410":"https://www.altoprofessional.com/products/ts410",
+"TS412":"https://www.altoprofessional.com/products/ts412",
+"TS415":"https://www.altoprofessional.com/products/ts415",
+"TX208":"https://www.altoprofessional.com/series/tx2",
+"TX210":"https://www.altoprofessional.com/series/tx2",
+"TX212":"https://www.altoprofessional.com/series/tx2",
+"TX215":"https://www.altoprofessional.com/series/tx2",
+"TS108C":"https://www.altoprofessional.com/products/ts108c",
+"TS112C":"https://www.altoprofessional.com/products/ts112c",
+"TS12S":"https://www.altoprofessional.com/products/ts12s",
+"TS15S":"https://www.altoprofessional.com/products/ts15s",
+"TS18S":"https://www.altoprofessional.com/products/ts18s",
+"Busker":"https://www.altoprofessional.com/products/busker",
+"Uber FX2":"https://www.altoprofessional.com/products/uber-fx2",
+"Stealth 1":"https://www.altoprofessional.com/products/stealth-1",
+"Bluetooth Ultimate":"https://www.altoprofessional.com/products/bluetooth-ultimate",
+"Bluetooth Total":"https://www.altoprofessional.com/products/bluetooth-total",
+"TrueMix 500":"https://www.altoprofessional.com/products/truemix-500",
+"TrueMix 600":"https://www.altoprofessional.com/products/truemix-600",
+"TrueMix 800 FX":"https://www.altoprofessional.com/products/truemix-800-fx",
+// ION Audio
+"Block Rocker":"https://www.ionaudio.com/block-rocker.html",
+"Block Rocker Plus":"https://www.ionaudio.com/blockrockerplus.html",
+"Pathfinder":"https://www.ionaudio.com/pathfinder-go.html",
+"Tailgater":"https://www.ionaudio.com/tailgater-classic.html",
+"Tailgater XL":"https://www.ionaudio.com/tailgater-xl.html",
+"Party Boom":"https://www.ionaudio.com/party-boom-fx.html",
+"Party Boom Plus":"https://www.ionaudio.com/party-boom-plus.html",
+"Total PA(Pro/Ultra 等)":"https://www.ionaudio.com/total-pa-ultra.html",
+"Total PA Quake":"https://www.ionaudio.com/total-pa-quake.html",
+"Max LP":"https://www.ionaudio.com/maxlp.html",
+"Archive LP":"https://www.ionaudio.com/archivelp.html",
+"Air LP":"https://www.ionaudio.com/airlp.html",
+// AIR Music Tech
+"Hybrid 3":"https://www.airmusictech.com/virtual-instruments/hybrid-3/",
+"Vacuum Pro":"https://www.airmusictech.com/virtual-instruments/vacuum-pro/",
+"Loom II":"https://www.airmusictech.com/virtual-instruments/loom-ii/",
+"Fabric":"https://www.airmusictech.com/virtual-instruments/fabric/",
+"Solina":"https://www.airmusictech.com/virtual-instruments/solina/",
+"Tube Synth":"https://www.airmusictech.com/virtual-instruments/tubesynth/",
+"Boom":"https://www.airmusictech.com/virtual-instruments/boom/",
+"Xpand!2":"https://www.airmusictech.com/virtual-instruments/xpand-2/",
+"Structure 2":"https://www.airmusictech.com/virtual-instruments/structure-2/",
+"Strike 2":"https://www.airmusictech.com/virtual-instruments/strike-2/",
+"Transfuser 2":"https://www.airmusictech.com/virtual-instruments/transfuser-2/",
+"Velvet":"https://www.airmusictech.com/virtual-instruments/velvet/",
+"Mini Grand":"https://www.airmusictech.com/virtual-instruments/mini-grand/",
+"DB‑33":"https://www.airmusictech.com/virtual-instruments/db-33/",
+"Creative FX Collection Plus":"https://www.airmusictech.com/effects/creative-fx-collection-plus/",
+"AIEP3(乐器扩展包 3)":"https://www.airmusictech.com/virtual-instruments/aiep3-complete/",
+// BFD
+"BFD3(现为 3.5)":"https://www.bfddrums.com/bfd3/",
+"BFD Player":"https://www.bfddrums.com/bfd-player/",
+"Expansion Packs":"https://www.bfddrums.com/bfd3-expansions/",
+"Groove Packs":"https://www.bfddrums.com/bfd3-groove-packs/",
+// Denon Professional
+"DN‑300Z":"https://www.denonpro.com/products/dn-300z.html",
+"DN‑300C":"https://www.denonpro.com/products/dn-300c.html",
+"DN‑350UI":"https://www.denonpro.com/products/dn-350ui",
+"DN‑F65S":"https://www.denonpro.com/products/dn-f65s.html",
+"DN‑500BD MKII":"https://www.denonpro.com/products/dn-500bdmkii",
+"DN‑300CR":"https://www.denonpro.com/products/dn-300cr",
+"DN‑900R":"https://www.denonpro.com/products/dn-900r.html",
+"DN‑508MX":"https://www.denonpro.com/products/dn-508mx",
+"DN‑312X":"https://www.denonpro.com/products/dn-312x",
+"DN‑508MXA":"https://www.denonpro.com/products/dn-508mxa",
+"DN‑306XA":"https://www.denonpro.com/products/dn-306xa",
+"DN‑333XAB":"https://www.denonpro.com/products/dn-333xab",
+"DN‑A300M":"https://www.denonpro.com/products/dn-a300m",
+"DN‑280":"https://www.denonpro.com/products/dn-280",
+"DN‑470A":"https://www.denonpro.com/products/dn-470a",
+"DN‑200BR":"https://www.denonpro.com/products/dn-200br",
+"DN‑200AZB":"https://www.denonpro.com/products/dn-200azb",
+"DN‑106S":"https://www.denonpro.com/products/dn-106s",
+"DN‑205W":"https://www.denonpro.com/products/dn-205w",
+// Marantz Professional
+"MPM‑1000":"https://www.marantzpro.com/products/mpm-1000",
+"MPM‑2000":"https://www.marantzpro.com/products/mpm-2000",
+"MPM‑1000U":"https://www.marantzpro.com/products/mpm-1000u",
+"MPM‑2000U":"https://www.marantzpro.com/products/mpm-2000u",
+"MPM‑4000U":"https://www.marantzpro.com/products/mpm-4000u",
+"Umpire":"https://www.marantzpro.com/products/umpire",
+"Pod Pack 1":"https://www.marantzpro.com/products/pod-pack-1",
+"Turret":"https://www.marantzpro.com/products/turret",
+"AVS":"https://www.marantzpro.com/products/avs",
+"PMD561":"https://www.marantzpro.com/products/pmd561",
+"PMD‑706":"https://www.marantzpro.com/products/pmd-706",
+"PMD661 MKIII":"https://www.marantzpro.com/products/pmd661-mkiii",
+"PMD‑526C":"https://www.marantzpro.com/products/pmd-526c",
+"Sound Shield / Compact":"https://www.marantzpro.com/products/sound-shield-compact",
+// Sonivox (single-page catalog)
+"Eighty Eight Ensemble":"https://www.sonivoxmi.com/",
+"Orchestral Companion(弦/铜/木)":"https://www.sonivoxmi.com/",
+"Film Score Companion":"https://www.sonivoxmi.com/",
+"Singer & Songwriter":"https://www.sonivoxmi.com/",
+"Vocalizer Pro":"https://www.sonivoxmi.com/",
+"Playa":"https://www.sonivoxmi.com/",
+"Big Bang Universal / Cinematic":"https://www.sonivoxmi.com/",
+"Wobble":"https://www.sonivoxmi.com/",
+"Twist":"https://www.sonivoxmi.com/",
+"Solina Redux":"https://www.sonivoxmi.com/",
+"Stratum / FM Piano":"https://www.sonivoxmi.com/",
+"Session / Blue Jay / Tony Coleman Drums":"https://www.sonivoxmi.com/",
+"Atsia Percussion / Silk Road":"https://www.sonivoxmi.com/",
+"Bright Electric Guitar / Taylor Acoustic 等":"https://www.sonivoxmi.com/",
+// Plugin Alliance / Brainworx
+"bx_console(SSL 9000 J/N 等)":"https://www.plugin-alliance.com/products/bx_console-ssl-9000-j",
+"bx_digital V3":"https://www.plugin-alliance.com/products/bx_digital-v3",
+"bx_masterdesk":"https://www.plugin-alliance.com/products/bx_masterdesk",
+"bx_oberhausen":"https://www.plugin-alliance.com/products/bx_oberhausen",
+"bx_XL V2":"https://www.plugin-alliance.com/products/bx_xl-v3",
+"bx_saturator V2":"https://www.plugin-alliance.com/products/bx_saturator-v2",
+"bx_refinement":"https://www.plugin-alliance.com/products/bx_refinement-v3",
+"Plugin Alliance 目录":"https://www.plugin-alliance.com/collections/all-products",
+// 2getheraudio
+"OpZilla":"https://www.2getheraudio.com/instruments/opzilla/",
+"Cheeze Machine PRO / 2":"https://www.2getheraudio.com/instruments/cheeze-machine-pro/",
+"RE4ORM / RE4ORM FX":"https://www.2getheraudio.com/instruments/re4orm/",
+"G8TOR":"https://www.2getheraudio.com/instruments/g8tor/",
+"K1CK / SN4RE / CL4P":"https://www.2getheraudio.com/instruments/sn4re-drum/",
+"Ticky Clav 2":"https://www.2getheraudio.com/instruments/ticky_clav_2/",
+"Space Duck":"https://www.2getheraudio.com/effects/space-duck/",
+"RICH / RICH Drums":"https://www.2getheraudio.com/effects/rich-drums/",
+"ST3REO / V1NYLLA":"https://www.2getheraudio.com/effects/st3reo/",
+// --- gap-fill additions ---
+// Akai
+"MPC XL":"https://www.akaipro.com/mpc-xl/",
+"MPC Live III":"https://www.akaipro.com/mpc-live-3/",
+"MPC Live 3 Retro":"https://www.akaipro.com/mpc-live-3-retro/",
+"MPC Sample":"https://www.akaipro.com/mpc-sample/",
+"MPK Mini IV":"https://www.akaipro.com/mpk-mini-4/",
+"MPK Road 88":"https://www.akaipro.com/mpk-road-88-mpkroad88xus",
+"Akai Fire":"https://www.akaipro.com/fire/",
+// NI
+"Traktor Kontrol F1":"https://www.native-instruments.com/en/products/traktor/dj-controllers/traktor-kontrol-f1/",
+// Moog
+"Bob Moog Tribute Edition Minimoog Model D":"https://www.moogmusic.com/synthesizers/bob-moog-tribute-edition-minimoog-model-d/",
+"Mariana":"https://software.moogmusic.com/store",
+// Denon DJ
+"VL12 Prime":"https://www.denondj.com/vl12%20prime-vl12primexus.html",
+// Numark
+"NS4FX":"https://www.numark.com/product/ns4fx",
+"Mixstream Pro":"https://www.numark.com/mixstream-pro",
+"Mixstream Pro +":"https://www.numark.com/product/mixstream-pro-plus",
+"Mixstream Pro Go":"https://www.numark.com/product/mixstream-pro-go",
+"Party Mix Live":"https://www.numark.com/product/party-mix-live",
+// Alesis
+"Turbo Mesh Kit":"https://www.alesis.com/products/view2/turbo-mesh-kit",
+"Command Mesh Special Edition":"https://www.alesisdrums.com/electronic-drum-kits/command-mesh-special-edition/",
+"Recital Pro MKII":"https://www.alesis.com/products/view/recital-pro-mkii.html",
+"Prestige Artist":"https://www.alesis.com/products/view2/prestige-artist.html",
+"Virtue":"https://www.alesis.com/products/view2/virtue.html",
+"Recital 61":"https://www.alesis.com/products/view2/recital-61.html",
+"V25 MKII":"https://www.alesis.com/products/view2/v25-mkii.html",
+"V49 MKII":"https://www.alesis.com/products/view2/v49-mkii.html",
+"V61 MKII":"https://www.alesis.com/products/view2/v61-mkii.html",
+"Q Mini":"https://www.alesis.com/products/view2/qmini.html",
+"Q49 MKII":"https://www.alesis.com/products/view2/q49-mkii.html",
+"Q88 MKII":"https://www.alesis.com/products/view2/q88-mkii.html",
+"Vmini":"https://www.alesis.com/products/view/vmini.html",
+"Vortex Wireless 2":"https://www.alesis.com/products/view2/vortex-wireless-2.html",
+"VI25":"https://www.alesis.com/products/view2/vi25.html",
+"VI49":"https://www.alesis.com/products/view2/vi49.html",
+"VI61":"https://www.alesis.com/products/view2/vi61.html",
+"Harmony 61 MK3":"https://www.alesis.com/products/view2/harmony-61-mk3.html",
+"Harmony 61 Pro":"https://www.alesis.com/products/view/harmony-61-pro.html",
+"Talent 61":"https://www.alesis.com/products/view2/talent-61.html",
+"Harmony 32":"https://www.alesis.com/products/view2/harmony-32.html",
+"Melody 54":"https://www.alesis.com/products/view2/melody-54.html",
+"Harmony 54":"https://www.alesis.com/products/view2/harmony-54.html",
+"Melody 61 MKII":"https://www.alesis.com/products/view2/melody-61-mkii.html",
+"Harmony 61 MKII":"https://www.alesis.com/products/view2/harmony-61-mkii.html",
+"Melody 61 Mk 4":"https://www.alesis.com/products/view2/melody-61-mk4.html",
+"Harmony 61":"https://www.alesis.com/products/view2/harmony-61.html",
+"Teachers Choice 61":"https://www.alesis.com/products/view/teachers-choice-61.html",
+"Elevate 5 MKII":"https://www.alesis.com/products/view/elevate-5-mkii.html",
+"DRP100":"https://www.alesis.com/products/view/drp100.html",
+"SRP100":"https://www.alesis.com/products/view/srp100.html",
+"MultiMix 8 USB FX":"https://www.alesis.com/products/view/multimix-8-usb-fx.html",
+"MultiMix 4 USB FX":"https://www.alesis.com/products/view/multimix-4-usb-fx.html",
+"MultiMix 12R":"https://www.alesis.com/products/view/multimix-12r.html",
+"MultiMix 10 Wireless":"https://www.alesis.com/products/view/multimix-10-wireless.html",
+"MicLink Wireless":"https://www.alesis.com/products/view/miclink-wireless1.html",
+"GuitarLink Wireless":"https://www.alesis.com/products/view/guitarlink-wireless.html",
+// M-Audio
+"M-Track Eight":"https://www.m-audio.com/audio-midi-interfaces/m-track-eight.html",
+"Uno":"https://www.m-audio.com/audio-midi-interfaces/uno.html",
+"M-Track Duo HD Producer Pack":"https://www.m-audio.com/audio-midi-interfaces/m-track-duo-hd-producer-pack.html",
+"AIR 192|4 Vocal Studio Pro":"https://www.m-audio.com/audio-midi-interfaces/air-192-4-vocal-studio-pro.html",
+"BX5BT":"https://www.m-audio.com/monitors-headphones/bx5bt.html",
+"BX3 BT":"https://www.m-audio.com/monitors-headphones/bx3bt.html",
+"BX4 BT":"https://www.m-audio.com/monitors-headphones/bx4bt.html",
+"Forty Sixty":"https://www.m-audio.com/monitors-headphones/forty-sixty.html",
+"Forty Eighty":"https://www.m-audio.com/monitors-headphones/forty-eighty.html",
+"AV32":"https://www.m-audio.com/monitors-headphones/av32.html",
+"Uber Mic":"https://www.m-audio.com/microphones/ubermic.html",
+// HeadRush
+"FRFR-GO":"https://www.headrushfx.com/products/frfr-go/index.html",
+// Alto
+"TX4 系列 (TX408–415)":"https://www.altoprofessional.com/products/tx408",
+"TX3 系列 (TX308–315)":"https://www.altoprofessional.com/products/tx308",
+"TX12S / TX18S":"https://www.altoprofessional.com/products/tx12s",
+"TMD16":"https://www.altoprofessional.com/products/tmd-16",
+"Live 系列调音台":"https://www.altoprofessional.com/series/alto-mixers",
+"Uber LT":"https://www.altoprofessional.com/products/uber-lt",
+"Uber PA":"https://www.altoprofessional.com/products/uber-pa",
+"Stealth Wireless MKII":"https://www.altoprofessional.com/categories/wireless-solutions",
+"Stealth Pro":"https://www.altoprofessional.com/categories/wireless-solutions",
+// AIR Music Tech
+"Iona":"https://www.airmusictech.com/virtual-instruments/iona/",
+"Mellotron":"https://www.airmusictech.com/virtual-instruments/mellotron/",
+"Drum Synth":"https://www.airmusictech.com/virtual-instruments/drum-synth/",
+"Bassline":"https://www.airmusictech.com/virtual-instruments/bassline/",
+"Organ":"https://www.airmusictech.com/virtual-instruments/organ/",
+"Electric":"https://www.airmusictech.com/virtual-instruments/electric.html",
+"Essential Keyboards":"https://www.airmusictech.com/virtual-instruments/essential-keyboards/",
+"The Keys Collection":"https://www.airmusictech.com/virtual-instruments/the-keys-collection/",
+"MPC Instruments Collection":"https://www.airmusictech.com/virtual-instruments/mpc-instruments-collection/",
+"Creative FX Collection 2":"https://www.airmusictech.com/effects/air-creative-fx-collection-2/",
+"Flavor Pro":"https://www.airmusictech.com/effects/flavor-pro.html",
+"Tape Effects Collection":"https://www.airmusictech.com/effects/tape-effects-collection/",
+"Tape Double Track":"https://www.airmusictech.com/effects/tape-double-track/",
+"Ether":"https://www.airmusictech.com/effects/ether/",
+"Multiband Filterbank":"https://www.airmusictech.com/effects/multiband-filterbank/",
+"Lo-Fly Dirt":"https://www.airmusictech.com/effects/lo-fly-dirt/",
+"Vocal FX Collection":"https://www.airmusictech.com/effects/vocal-fx-collection/",
+"Vocal Tuner":"https://www.airmusictech.com/effects/vocal-tuner/",
+"Sprite":"https://www.airmusictech.com/effects/sprite/",
+"Vocal Distortion":"https://www.airmusictech.com/effects/air-vocal-distortion/",
+"Delay Pro":"https://www.airmusictech.com/effects/delay-pro/",
+// ION Audio
+"Trailblazer 系列":"https://www.ionaudio.com/trailblazer.html",
+"Explorer 系列":"https://www.ionaudio.com/explorer-xl.html",
+"Glow Tone":"https://www.ionaudio.com/glow-tone.html",
+"Wave Rider X":"https://www.ionaudio.com/wave-rider-x.html",
+"Classic LP":"https://www.ionaudio.com/classiclp.html",
+"Luxe LP":"https://www.ionaudio.com/luxe-lp-espresso.html",
+"Premier LP":"https://www.ionaudio.com/premier-lp-natural.html",
+// Denon Professional
+"DN-300C MKII":"https://www.denonpro.com/products/dn-300cmkii",
+"DN-350MP":"https://www.denonpro.com/products/dn-350mp",
+"DN-300DH":"https://www.denonpro.com/products/dn-300dh",
+"DN-F350":"https://www.denonpro.com/products/dn-f350",
+"DN-300R MKII":"https://www.denonpro.com/products/dn-300rmkii",
+"DN-300BR":"https://www.denonpro.com/products/dn-300br",
+"DN-202WR":"https://www.denonpro.com/products/dn-202wr",
+"DN-202WT":"https://www.denonpro.com/products/dn-202wt",
+"Audio Commander":"https://www.denonpro.com/products/overview/audio-commander1",
+"Commander Sport":"https://www.denonpro.com/products/commander-sport",
+// Marantz Professional
+"PMD-100CD":"https://www.marantzpro.com/products/pmd-100cd",
+"PMD-300CP":"https://www.marantzpro.com/products/pmd-300cp",
+"PMD-750":"https://www.marantzpro.com/products/pmd-750",
+};
+
+// ---- render ----
+const catMap=Object.fromEntries(CATS.map(c=>[c.key,c]));
+const matrix=document.getElementById('matrix');
+let total=0;
+for(const cat of CATS){
+  const bs=BRANDS.filter(b=>b.cat===cat.key);
+  if(!bs.length) continue;
+  const cnt=bs.reduce((s,b)=>s+b.p.length,0);
+  const sec=document.createElement('section');
+  sec.className='cat';sec.id='cat-'+cat.key;sec.dataset.cat=cat.key;
+  const col=`var(${cat.cvar})`;
+  sec.innerHTML=`<div class="cat-head"><span class="tick" style="background:${col}"></span><h2>${cat.name}</h2><span class="rule"></span><span class="cn">${bs.length} 品牌 · ${cnt} 型号</span></div>`;
+  for(const b of bs){
+    total+=b.p.length;
+    const card=document.createElement('div');card.className='brand';card.dataset.brand=b.name.toLowerCase();
+    const badge=b.site?`<span class="badge site">官网品牌</span>`:`<span class="badge grp">集团品牌</span>`;
+    const rows=b.p.map(pr=>{
+      const pill=pr.x?`<span class="pill">${cat.key==='dj'&&b.name==='MixMeister'?'停更':'停产'}</span>`:'';
+      const url=URLS[pr.n];
+      const model=url?`<a href="${url}" target="_blank" rel="noopener noreferrer">${pr.n}</a>`:pr.n;
+      return `<tr class="${pr.x?'disc':''}" data-s="${(pr.n+' '+pr.c+' '+pr.d).toLowerCase()}">`+
+             `<td class="model">${model}${pill}</td><td class="type">${pr.c}</td><td class="desc">${pr.d}</td></tr>`;
+    }).join('');
+    card.innerHTML=`<div class="brand-head"><span class="bn">${b.name}</span>${badge}<span class="tag">${b.tag}</span><span class="ct">${b.p.length} 项</span></div>`+
+      (b.note?`<div class="own-note">${b.note}</div>`:'')+
+      `<div class="tbl-scroll"><table><thead><tr><th>型号 / Product</th><th>类别</th><th>描述</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    sec.appendChild(card);
+  }
+  matrix.appendChild(sec);
+}
+
+// ---- chips ----
+const chips=document.getElementById('chips');
+let active='all';
+const mk=(key,label,col)=>{const c=document.createElement('button');c.className='chip';c.setAttribute('aria-pressed',key==='all');c.dataset.k=key;c.innerHTML=(col?`<span class="dot" style="background:${col}"></span>`:'')+label;c.onclick=()=>{active=key;[...chips.children].forEach(x=>x.setAttribute('aria-pressed',x.dataset.k===key));apply();if(key!=='all'){document.getElementById('cat-'+key)?.scrollIntoView({block:'start'});}};return c;};
+chips.appendChild(mk('all','全部'));
+CATS.forEach(c=>chips.appendChild(mk(c.key,c.name,`var(${c.cvar})`)));
+
+// ---- search + filter ----
+const q=document.getElementById('q');
+const noresult=document.getElementById('noresult');
+function apply(){
+  const term=q.value.trim().toLowerCase();
+  let shown=0;
+  document.querySelectorAll('.cat').forEach(sec=>{
+    const catOk=active==='all'||sec.dataset.cat===active;
+    let secVis=0;
+    sec.querySelectorAll('.brand').forEach(card=>{
+      let vis=0;
+      card.querySelectorAll('tbody tr').forEach(tr=>{
+        const ok=catOk&&(!term||tr.dataset.s.includes(term));
+        tr.style.display=ok?'':'none';if(ok)vis++;
+      });
+      card.style.display=vis?'':'none';secVis+=vis;
+    });
+    sec.style.display=secVis?'':'none';shown+=secVis;
+  });
+  noresult.style.display=shown?'none':'block';
+}
+q.addEventListener('input',apply);
+
+// ---- theme toggle ----
+const root=document.documentElement;
+document.getElementById('theme').onclick=()=>{
+  const cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',cur==='dark'?'light':'dark');
+};
+</script>
+</body>
+</html>
