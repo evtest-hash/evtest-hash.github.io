@@ -1201,7 +1201,13 @@ const URLS={
 };
 
 // ---- search normalization: 大小写无关 + 连字符统一 + 全角转半角 + 空格压缩 ----
-const norm=s=>(s||'').normalize('NFKC').toLowerCase().replace(/[‐-―−]/g,'-').replace(/\s+/g,' ').trim();
+function norm(s){
+  s=(s||'').normalize('NFKC').toLowerCase().replace(/\+/g,'plus');
+  s=s.replace(/\bmk\s+/g,'mk');                                   // "Mk 3"/"MK II" → mkII 连写
+  s=s.replace(/mkiii\b/g,'mk3').replace(/mkiv\b/g,'mk4').replace(/mkii\b/g,'mk2'); // Mk 世代统一
+  s=s.replace(/\biii\b/g,'3').replace(/\biv\b/g,'4').replace(/\bii\b/g,'2');        // 罗马数字→阿拉伯
+  return s.replace(/[^0-9a-z一-鿿]+/g,'');       // 去掉一切分隔符/标点,保留中文
+}
 // ---- render ----
 const catMap=Object.fromEntries(CATS.map(c=>[c.key,c]));
 const matrix=document.getElementById('matrix');
