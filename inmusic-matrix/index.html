@@ -1200,6 +1200,8 @@ const URLS={
 "PMD-750":"https://www.marantzpro.com/products/pmd-750",
 };
 
+// ---- search normalization: 大小写无关 + 连字符统一 + 全角转半角 + 空格压缩 ----
+const norm=s=>(s||'').normalize('NFKC').toLowerCase().replace(/[‐-―−]/g,'-').replace(/\s+/g,' ').trim();
 // ---- render ----
 const catMap=Object.fromEntries(CATS.map(c=>[c.key,c]));
 const matrix=document.getElementById('matrix');
@@ -1220,7 +1222,7 @@ for(const cat of CATS){
       const pill=pr.x?`<span class="pill">${cat.key==='dj'&&b.name==='MixMeister'?'停更':'停产'}</span>`:'';
       const url=URLS[pr.n];
       const model=url?`<a href="${url}" target="_blank" rel="noopener noreferrer">${pr.n}</a>`:pr.n;
-      return `<tr class="${pr.x?'disc':''}" data-s="${(pr.n+' '+pr.c+' '+pr.d).toLowerCase()}">`+
+      return `<tr class="${pr.x?'disc':''}" data-s="${norm(pr.n+' '+pr.c+' '+pr.d)}">`+
              `<td class="model">${model}${pill}</td><td class="type">${pr.c}</td><td class="desc">${pr.d}</td></tr>`;
     }).join('');
     card.innerHTML=`<div class="brand-head"><span class="bn">${b.name}</span>${badge}<span class="tag">${b.tag}</span><span class="ct">${b.p.length} 项</span></div>`+
@@ -1242,7 +1244,7 @@ CATS.forEach(c=>chips.appendChild(mk(c.key,c.name,`var(${c.cvar})`)));
 const q=document.getElementById('q');
 const noresult=document.getElementById('noresult');
 function apply(){
-  const term=q.value.trim().toLowerCase();
+  const term=norm(q.value);
   let shown=0;
   document.querySelectorAll('.cat').forEach(sec=>{
     const catOk=active==='all'||sec.dataset.cat===active;
